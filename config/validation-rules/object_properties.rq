@@ -1,0 +1,41 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:  <http://schema.org/>
+PREFIX spin:    <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?s ;
+    spin:violationPath ?objectProperty ;
+    spin:invalidValue ?o ;
+    rdfs:label ?violationLabelEN, ?violationLabelCS .
+}
+WHERE {
+  GRAPH ?validatedGraph {
+    VALUES ?objectProperty {
+      schema:address
+      schema:compensation
+      schema:contact
+      dcterms:publisher
+      schema:employer
+      schema:experienceRequirements
+      schema:jobLocation
+    }
+    ?s ?objectProperty ?o .
+    FILTER (isLiteral(?o))
+    BIND (STRLANG(CONCAT(
+      "The value of the property <",
+      str(?objectProperty),
+      "> must be an object (identified with URI or blank node), not a literal (text \"",
+      str(?o),
+      "\")."
+    ), "en") AS ?violationLabelEN)
+    BIND (STRLANG(CONCAT(
+      "Hodnotou vlastnosti <",
+      str(?objectProperty),
+      "> musí být objekt (identifikovaný URI nebo blank nodem), ne literál (text \"",
+      str(?o),
+      "\")."
+    ), "cs") AS ?violationLabelCS)
+  }
+}

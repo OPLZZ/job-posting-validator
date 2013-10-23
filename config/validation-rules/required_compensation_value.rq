@@ -1,0 +1,25 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:  <http://schema.org/>
+PREFIX spin:    <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?compensation ;
+    spin:violationPath ?requiredProperty ;
+    rdfs:label "Specifying compensation's value (with either schema:value, schema:minValue or schema:maxValue) is required."@en, 
+      "Kompenzace musí určovat svou hodnotu (pomocí schema:value, schema:minValue nebo schema:maxValue)."@cs
+    .
+}
+WHERE {
+  GRAPH ?validatedGraph {
+    [] schema:compensation ?compensation .
+    FILTER NOT EXISTS {
+      VALUES ?requiredProperty {
+        schema:value
+        schema:minValue
+        schema:maxValue
+      }
+      ?compensation ?requiredProperty [] .
+    }
+  }
+}

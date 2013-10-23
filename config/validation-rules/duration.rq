@@ -1,0 +1,21 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:  <http://schema.org/>
+PREFIX spin:    <http://spinrdf.org/spin#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?s ;
+    spin:violationPath schema:duration ;
+    spin:invalidValue ?duration ;
+    rdfs:label "Invalid value of schema:duration that doesn't conform to the xsd:duration datatype."@en, 
+      "Neplatná hodnota vlastnosti schema:duration, která nevyhovuje datovému typu xsd:duration."@cs
+    .
+}
+WHERE {
+  GRAPH ?validatedGraph {
+    ?s schema:duration ?duration .
+    BIND (xsd:duration(?duration) AS ?test)
+    FILTER (!bound(?test))
+  }
+}

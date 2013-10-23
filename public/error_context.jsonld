@@ -1,0 +1,18 @@
+{
+  "@context" : {
+    "@vocab" : "http://spinrdf.org/spin#",
+    "dcterms" : "http://purl.org/dc/terms/",
+    "rdfs" : "http://www.w3.org/2000/01/rdf-schema#",
+    "schema" : "http://schema.org/",
+    "xsd" : "http://www.w3.org/2001/XMLSchema#",
+
+    "comment" : "rdfs:comment",
+    "label" : "rdfs:label",
+    "violationPath" : {
+      "@type" : "@id"
+    },
+    "violationRoot" : {
+      "@type" : "@id"
+    }
+  }
+}

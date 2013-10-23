@@ -1,0 +1,51 @@
+<div>
+  <h2><%= t "preview.validation_results" %></h2>
+  
+  <% if @errors.empty? %>
+    <p class="label label-success"><%= t "preview.passed" %></p>
+  <% else %>
+    <p class="label label-important"><%= t "preview.failed" %></p>
+    <p><%= t "preview.errors_no" %>: <strong><%= @errors.size %></strong></p>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th><%= t "preview.error" %></th><%# label %>
+          <th><%= t "preview.violation_path" %></th>
+          <th><%= t "preview.invalid_value" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for @error in @errors %>
+          <tr>
+            <td>
+              <%= @error["label"] %>
+              <% if @error.has_key? "comment" %>
+                <span class="has-tooltip icon-info-sign"
+                   data-original-title="<%= @error["comment"] %>"></span>
+              <% end %>
+            </td>
+            <td>
+              <% if @error["violationPath"].is_a? Enumerable %>
+                <%= @error["violationPath"].join(", ") %>
+              <% else %>
+                <%= @error["violationPath"] %>
+              <% end %>
+            </td>
+            <td><%= @error["invalidValue"] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  <% end %> 
+
+  <h2><%= t "preview.title" %></h2>
+
+  <p><%= t "preview.description" %></p>
+  
+  <div id="preview">  
+    <% for job_posting in @job_postings %>
+      <div><%= render partial: "object", locals: {object: job_posting } %></div>
+    <% end %>
+  </div>
+</div>

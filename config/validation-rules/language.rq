@@ -1,0 +1,28 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin: <http://spinrdf.org/spin#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?s ;
+    spin:violationPath ?p ;
+    spin:invalidValue ?o ;
+    rdfs:label "Invalid language code."@en , 
+      "Neplatný kód jazyka."@cs ;
+    rdfs:comment "Use ISO 639-1 codes: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"@en ,
+      "Použijte kódy z ISO 639-1: http://cs.wikipedia.org/wiki/Seznam_k%C3%B3d%C5%AF_ISO_639-1"@cs
+    .
+}
+WHERE {
+  GRAPH ?validatedGraph {
+    ?s ?p ?o .
+    FILTER (isLiteral(?o) && !(lang(?o) = ""))
+  }
+  # Use only the first subtag (first 2 letters); e.g., "en" instead of "en-US".
+  BIND (substr(lang(?o), 0, 3) AS ?lang)
+  FILTER NOT EXISTS {
+    GRAPH <http://id.loc.gov/vocabulary/iso639-1> {
+      [] skos:notation ?lang .
+    }
+  }
+}

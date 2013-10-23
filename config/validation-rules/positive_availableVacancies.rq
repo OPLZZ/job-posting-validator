@@ -1,0 +1,19 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:  <http://schema.org/>
+PREFIX spin:    <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?s ;
+    spin:violationPath schema:availableVacancies ;
+    spin:invalidValue ?availableVacancies ;
+    rdfs:label "Number of available vacancies has to be ≥ 1."@en, 
+      "Počet nabízených míst musí být ≥ 1."@cs
+    .
+}
+WHERE {
+  GRAPH ?validatedGraph {
+    ?s schema:availableVacancies ?availableVacancies .
+    FILTER (?availableVacancies < 1)
+  }
+}

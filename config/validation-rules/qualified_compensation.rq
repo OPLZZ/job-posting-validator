@@ -1,0 +1,27 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:  <http://schema.org/>
+PREFIX spin:    <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?compensation ;
+    spin:violationPath schema:currency, schema:type ;
+    rdfs:label "Compensation has to state its currency (schema:currency) and type (schema:type)."@en , 
+      "U kompenzace musí být uvedena měna (schema:currency) a typ (schema:type)."@cs
+    .
+}
+WHERE {
+  GRAPH ?validatedGraph {
+    [] schema:compensation ?compensation .
+    {
+      ?compensation schema:value [] .
+    } UNION {
+      ?compensation schema:minValue [] ;
+        schema:maxValue [] .
+    }
+    FILTER NOT EXISTS {
+      ?compensation schema:currency [] ;
+        schema:type [] .
+    }
+  }
+}

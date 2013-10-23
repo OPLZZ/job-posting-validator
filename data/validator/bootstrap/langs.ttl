@@ -1,0 +1,380 @@
+
+<http://id.loc.gov/vocabulary/iso639-1/aa> <http://www.w3.org/2004/02/skos/core#notation> "aa" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ab> <http://www.w3.org/2004/02/skos/core#notation> "ab" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ae> <http://www.w3.org/2004/02/skos/core#notation> "ae" .
+
+<http://id.loc.gov/vocabulary/iso639-1/af> <http://www.w3.org/2004/02/skos/core#notation> "af" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ak> <http://www.w3.org/2004/02/skos/core#notation> "ak" .
+
+<http://id.loc.gov/vocabulary/iso639-1/am> <http://www.w3.org/2004/02/skos/core#notation> "am" .
+
+<http://id.loc.gov/vocabulary/iso639-1/an> <http://www.w3.org/2004/02/skos/core#notation> "an" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ar> <http://www.w3.org/2004/02/skos/core#notation> "ar" .
+
+<http://id.loc.gov/vocabulary/iso639-1/as> <http://www.w3.org/2004/02/skos/core#notation> "as" .
+
+<http://id.loc.gov/vocabulary/iso639-1/av> <http://www.w3.org/2004/02/skos/core#notation> "av" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ay> <http://www.w3.org/2004/02/skos/core#notation> "ay" .
+
+<http://id.loc.gov/vocabulary/iso639-1/az> <http://www.w3.org/2004/02/skos/core#notation> "az" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ba> <http://www.w3.org/2004/02/skos/core#notation> "ba" .
+
+<http://id.loc.gov/vocabulary/iso639-1/be> <http://www.w3.org/2004/02/skos/core#notation> "be" .
+
+<http://id.loc.gov/vocabulary/iso639-1/bg> <http://www.w3.org/2004/02/skos/core#notation> "bg" .
+
+<http://id.loc.gov/vocabulary/iso639-1/bh> <http://www.w3.org/2004/02/skos/core#notation> "bh" .
+
+<http://id.loc.gov/vocabulary/iso639-1/bi> <http://www.w3.org/2004/02/skos/core#notation> "bi" .
+
+<http://id.loc.gov/vocabulary/iso639-1/bm> <http://www.w3.org/2004/02/skos/core#notation> "bm" .
+
+<http://id.loc.gov/vocabulary/iso639-1/bn> <http://www.w3.org/2004/02/skos/core#notation> "bn" .
+
+<http://id.loc.gov/vocabulary/iso639-1/bo> <http://www.w3.org/2004/02/skos/core#notation> "bo" .
+
+<http://id.loc.gov/vocabulary/iso639-1/br> <http://www.w3.org/2004/02/skos/core#notation> "br" .
+
+<http://id.loc.gov/vocabulary/iso639-1/bs> <http://www.w3.org/2004/02/skos/core#notation> "bs" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ca> <http://www.w3.org/2004/02/skos/core#notation> "ca" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ce> <http://www.w3.org/2004/02/skos/core#notation> "ce" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ch> <http://www.w3.org/2004/02/skos/core#notation> "ch" .
+
+<http://id.loc.gov/vocabulary/iso639-1/co> <http://www.w3.org/2004/02/skos/core#notation> "co" .
+
+<http://id.loc.gov/vocabulary/iso639-1/cr> <http://www.w3.org/2004/02/skos/core#notation> "cr" .
+
+<http://id.loc.gov/vocabulary/iso639-1/cs> <http://www.w3.org/2004/02/skos/core#notation> "cs" .
+
+<http://id.loc.gov/vocabulary/iso639-1/cu> <http://www.w3.org/2004/02/skos/core#notation> "cu" .
+
+<http://id.loc.gov/vocabulary/iso639-1/cv> <http://www.w3.org/2004/02/skos/core#notation> "cv" .
+
+<http://id.loc.gov/vocabulary/iso639-1/cy> <http://www.w3.org/2004/02/skos/core#notation> "cy" .
+
+<http://id.loc.gov/vocabulary/iso639-1/da> <http://www.w3.org/2004/02/skos/core#notation> "da" .
+
+<http://id.loc.gov/vocabulary/iso639-1/de> <http://www.w3.org/2004/02/skos/core#notation> "de" .
+
+<http://id.loc.gov/vocabulary/iso639-1/dv> <http://www.w3.org/2004/02/skos/core#notation> "dv" .
+
+<http://id.loc.gov/vocabulary/iso639-1/dz> <http://www.w3.org/2004/02/skos/core#notation> "dz" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ee> <http://www.w3.org/2004/02/skos/core#notation> "ee" .
+
+<http://id.loc.gov/vocabulary/iso639-1/el> <http://www.w3.org/2004/02/skos/core#notation> "el" .
+
+<http://id.loc.gov/vocabulary/iso639-1/en> <http://www.w3.org/2004/02/skos/core#notation> "en" .
+
+<http://id.loc.gov/vocabulary/iso639-1/eo> <http://www.w3.org/2004/02/skos/core#notation> "eo" .
+
+<http://id.loc.gov/vocabulary/iso639-1/es> <http://www.w3.org/2004/02/skos/core#notation> "es" .
+
+<http://id.loc.gov/vocabulary/iso639-1/et> <http://www.w3.org/2004/02/skos/core#notation> "et" .
+
+<http://id.loc.gov/vocabulary/iso639-1/eu> <http://www.w3.org/2004/02/skos/core#notation> "eu" .
+
+<http://id.loc.gov/vocabulary/iso639-1/fa> <http://www.w3.org/2004/02/skos/core#notation> "fa" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ff> <http://www.w3.org/2004/02/skos/core#notation> "ff" .
+
+<http://id.loc.gov/vocabulary/iso639-1/fi> <http://www.w3.org/2004/02/skos/core#notation> "fi" .
+
+<http://id.loc.gov/vocabulary/iso639-1/fj> <http://www.w3.org/2004/02/skos/core#notation> "fj" .
+
+<http://id.loc.gov/vocabulary/iso639-1/fo> <http://www.w3.org/2004/02/skos/core#notation> "fo" .
+
+<http://id.loc.gov/vocabulary/iso639-1/fr> <http://www.w3.org/2004/02/skos/core#notation> "fr" .
+
+<http://id.loc.gov/vocabulary/iso639-1/fy> <http://www.w3.org/2004/02/skos/core#notation> "fy" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ga> <http://www.w3.org/2004/02/skos/core#notation> "ga" .
+
+<http://id.loc.gov/vocabulary/iso639-1/gd> <http://www.w3.org/2004/02/skos/core#notation> "gd" .
+
+<http://id.loc.gov/vocabulary/iso639-1/gl> <http://www.w3.org/2004/02/skos/core#notation> "gl" .
+
+<http://id.loc.gov/vocabulary/iso639-1/gn> <http://www.w3.org/2004/02/skos/core#notation> "gn" .
+
+<http://id.loc.gov/vocabulary/iso639-1/gu> <http://www.w3.org/2004/02/skos/core#notation> "gu" .
+
+<http://id.loc.gov/vocabulary/iso639-1/gv> <http://www.w3.org/2004/02/skos/core#notation> "gv" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ha> <http://www.w3.org/2004/02/skos/core#notation> "ha" .
+
+<http://id.loc.gov/vocabulary/iso639-1/he> <http://www.w3.org/2004/02/skos/core#notation> "he" .
+
+<http://id.loc.gov/vocabulary/iso639-1/hi> <http://www.w3.org/2004/02/skos/core#notation> "hi" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ho> <http://www.w3.org/2004/02/skos/core#notation> "ho" .
+
+<http://id.loc.gov/vocabulary/iso639-1/hr> <http://www.w3.org/2004/02/skos/core#notation> "hr" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ht> <http://www.w3.org/2004/02/skos/core#notation> "ht" .
+
+<http://id.loc.gov/vocabulary/iso639-1/hu> <http://www.w3.org/2004/02/skos/core#notation> "hu" .
+
+<http://id.loc.gov/vocabulary/iso639-1/hy> <http://www.w3.org/2004/02/skos/core#notation> "hy" .
+
+<http://id.loc.gov/vocabulary/iso639-1/hz> <http://www.w3.org/2004/02/skos/core#notation> "hz" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ia> <http://www.w3.org/2004/02/skos/core#notation> "ia" .
+
+<http://id.loc.gov/vocabulary/iso639-1/id> <http://www.w3.org/2004/02/skos/core#notation> "id" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ie> <http://www.w3.org/2004/02/skos/core#notation> "ie" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ig> <http://www.w3.org/2004/02/skos/core#notation> "ig" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ii> <http://www.w3.org/2004/02/skos/core#notation> "ii" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ik> <http://www.w3.org/2004/02/skos/core#notation> "ik" .
+
+<http://id.loc.gov/vocabulary/iso639-1/in> <http://www.w3.org/2004/02/skos/core#notation> "in" .
+
+<http://id.loc.gov/vocabulary/iso639-1/io> <http://www.w3.org/2004/02/skos/core#notation> "io" .
+
+<http://id.loc.gov/vocabulary/iso639-1/is> <http://www.w3.org/2004/02/skos/core#notation> "is" .
+
+<http://id.loc.gov/vocabulary/iso639-1/it> <http://www.w3.org/2004/02/skos/core#notation> "it" .
+
+<http://id.loc.gov/vocabulary/iso639-1/iu> <http://www.w3.org/2004/02/skos/core#notation> "iu" .
+
+<http://id.loc.gov/vocabulary/iso639-1/iw> <http://www.w3.org/2004/02/skos/core#notation> "iw" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ja> <http://www.w3.org/2004/02/skos/core#notation> "ja" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ji> <http://www.w3.org/2004/02/skos/core#notation> "ji" .
+
+<http://id.loc.gov/vocabulary/iso639-1/jv> <http://www.w3.org/2004/02/skos/core#notation> "jv" .
+
+<http://id.loc.gov/vocabulary/iso639-1/jw> <http://www.w3.org/2004/02/skos/core#notation> "jw" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ka> <http://www.w3.org/2004/02/skos/core#notation> "ka" .
+
+<http://id.loc.gov/vocabulary/iso639-1/kg> <http://www.w3.org/2004/02/skos/core#notation> "kg" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ki> <http://www.w3.org/2004/02/skos/core#notation> "ki" .
+
+<http://id.loc.gov/vocabulary/iso639-1/kj> <http://www.w3.org/2004/02/skos/core#notation> "kj" .
+
+<http://id.loc.gov/vocabulary/iso639-1/kk> <http://www.w3.org/2004/02/skos/core#notation> "kk" .
+
+<http://id.loc.gov/vocabulary/iso639-1/kl> <http://www.w3.org/2004/02/skos/core#notation> "kl" .
+
+<http://id.loc.gov/vocabulary/iso639-1/km> <http://www.w3.org/2004/02/skos/core#notation> "km" .
+
+<http://id.loc.gov/vocabulary/iso639-1/kn> <http://www.w3.org/2004/02/skos/core#notation> "kn" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ko> <http://www.w3.org/2004/02/skos/core#notation> "ko" .
+
+<http://id.loc.gov/vocabulary/iso639-1/kr> <http://www.w3.org/2004/02/skos/core#notation> "kr" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ks> <http://www.w3.org/2004/02/skos/core#notation> "ks" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ku> <http://www.w3.org/2004/02/skos/core#notation> "ku" .
+
+<http://id.loc.gov/vocabulary/iso639-1/kv> <http://www.w3.org/2004/02/skos/core#notation> "kv" .
+
+<http://id.loc.gov/vocabulary/iso639-1/kw> <http://www.w3.org/2004/02/skos/core#notation> "kw" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ky> <http://www.w3.org/2004/02/skos/core#notation> "ky" .
+
+<http://id.loc.gov/vocabulary/iso639-1/la> <http://www.w3.org/2004/02/skos/core#notation> "la" .
+
+<http://id.loc.gov/vocabulary/iso639-1/lb> <http://www.w3.org/2004/02/skos/core#notation> "lb" .
+
+<http://id.loc.gov/vocabulary/iso639-1/lg> <http://www.w3.org/2004/02/skos/core#notation> "lg" .
+
+<http://id.loc.gov/vocabulary/iso639-1/li> <http://www.w3.org/2004/02/skos/core#notation> "li" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ln> <http://www.w3.org/2004/02/skos/core#notation> "ln" .
+
+<http://id.loc.gov/vocabulary/iso639-1/lo> <http://www.w3.org/2004/02/skos/core#notation> "lo" .
+
+<http://id.loc.gov/vocabulary/iso639-1/lt> <http://www.w3.org/2004/02/skos/core#notation> "lt" .
+
+<http://id.loc.gov/vocabulary/iso639-1/lu> <http://www.w3.org/2004/02/skos/core#notation> "lu" .
+
+<http://id.loc.gov/vocabulary/iso639-1/lv> <http://www.w3.org/2004/02/skos/core#notation> "lv" .
+
+<http://id.loc.gov/vocabulary/iso639-1/mg> <http://www.w3.org/2004/02/skos/core#notation> "mg" .
+
+<http://id.loc.gov/vocabulary/iso639-1/mh> <http://www.w3.org/2004/02/skos/core#notation> "mh" .
+
+<http://id.loc.gov/vocabulary/iso639-1/mi> <http://www.w3.org/2004/02/skos/core#notation> "mi" .
+
+<http://id.loc.gov/vocabulary/iso639-1/mk> <http://www.w3.org/2004/02/skos/core#notation> "mk" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ml> <http://www.w3.org/2004/02/skos/core#notation> "ml" .
+
+<http://id.loc.gov/vocabulary/iso639-1/mn> <http://www.w3.org/2004/02/skos/core#notation> "mn" .
+
+<http://id.loc.gov/vocabulary/iso639-1/mo> <http://www.w3.org/2004/02/skos/core#notation> "mo" .
+
+<http://id.loc.gov/vocabulary/iso639-1/mr> <http://www.w3.org/2004/02/skos/core#notation> "mr" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ms> <http://www.w3.org/2004/02/skos/core#notation> "ms" .
+
+<http://id.loc.gov/vocabulary/iso639-1/mt> <http://www.w3.org/2004/02/skos/core#notation> "mt" .
+
+<http://id.loc.gov/vocabulary/iso639-1/my> <http://www.w3.org/2004/02/skos/core#notation> "my" .
+
+<http://id.loc.gov/vocabulary/iso639-1/na> <http://www.w3.org/2004/02/skos/core#notation> "na" .
+
+<http://id.loc.gov/vocabulary/iso639-1/nb> <http://www.w3.org/2004/02/skos/core#notation> "nb" .
+
+<http://id.loc.gov/vocabulary/iso639-1/nd> <http://www.w3.org/2004/02/skos/core#notation> "nd" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ne> <http://www.w3.org/2004/02/skos/core#notation> "ne" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ng> <http://www.w3.org/2004/02/skos/core#notation> "ng" .
+
+<http://id.loc.gov/vocabulary/iso639-1/nl> <http://www.w3.org/2004/02/skos/core#notation> "nl" .
+
+<http://id.loc.gov/vocabulary/iso639-1/nn> <http://www.w3.org/2004/02/skos/core#notation> "nn" .
+
+<http://id.loc.gov/vocabulary/iso639-1/no> <http://www.w3.org/2004/02/skos/core#notation> "no" .
+
+<http://id.loc.gov/vocabulary/iso639-1/nr> <http://www.w3.org/2004/02/skos/core#notation> "nr" .
+
+<http://id.loc.gov/vocabulary/iso639-1/nv> <http://www.w3.org/2004/02/skos/core#notation> "nv" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ny> <http://www.w3.org/2004/02/skos/core#notation> "ny" .
+
+<http://id.loc.gov/vocabulary/iso639-1/oc> <http://www.w3.org/2004/02/skos/core#notation> "oc" .
+
+<http://id.loc.gov/vocabulary/iso639-1/oj> <http://www.w3.org/2004/02/skos/core#notation> "oj" .
+
+<http://id.loc.gov/vocabulary/iso639-1/om> <http://www.w3.org/2004/02/skos/core#notation> "om" .
+
+<http://id.loc.gov/vocabulary/iso639-1/or> <http://www.w3.org/2004/02/skos/core#notation> "or" .
+
+<http://id.loc.gov/vocabulary/iso639-1/os> <http://www.w3.org/2004/02/skos/core#notation> "os" .
+
+<http://id.loc.gov/vocabulary/iso639-1/pa> <http://www.w3.org/2004/02/skos/core#notation> "pa" .
+
+<http://id.loc.gov/vocabulary/iso639-1/pi> <http://www.w3.org/2004/02/skos/core#notation> "pi" .
+
+<http://id.loc.gov/vocabulary/iso639-1/pl> <http://www.w3.org/2004/02/skos/core#notation> "pl" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ps> <http://www.w3.org/2004/02/skos/core#notation> "ps" .
+
+<http://id.loc.gov/vocabulary/iso639-1/pt> <http://www.w3.org/2004/02/skos/core#notation> "pt" .
+
+<http://id.loc.gov/vocabulary/iso639-1/qu> <http://www.w3.org/2004/02/skos/core#notation> "qu" .
+
+<http://id.loc.gov/vocabulary/iso639-1/rm> <http://www.w3.org/2004/02/skos/core#notation> "rm" .
+
+<http://id.loc.gov/vocabulary/iso639-1/rn> <http://www.w3.org/2004/02/skos/core#notation> "rn" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ro> <http://www.w3.org/2004/02/skos/core#notation> "ro" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ru> <http://www.w3.org/2004/02/skos/core#notation> "ru" .
+
+<http://id.loc.gov/vocabulary/iso639-1/rw> <http://www.w3.org/2004/02/skos/core#notation> "rw" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sa> <http://www.w3.org/2004/02/skos/core#notation> "sa" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sc> <http://www.w3.org/2004/02/skos/core#notation> "sc" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sd> <http://www.w3.org/2004/02/skos/core#notation> "sd" .
+
+<http://id.loc.gov/vocabulary/iso639-1/se> <http://www.w3.org/2004/02/skos/core#notation> "se" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sg> <http://www.w3.org/2004/02/skos/core#notation> "sg" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sh> <http://www.w3.org/2004/02/skos/core#notation> "sh" .
+
+<http://id.loc.gov/vocabulary/iso639-1/si> <http://www.w3.org/2004/02/skos/core#notation> "si" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sk> <http://www.w3.org/2004/02/skos/core#notation> "sk" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sl> <http://www.w3.org/2004/02/skos/core#notation> "sl" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sm> <http://www.w3.org/2004/02/skos/core#notation> "sm" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sn> <http://www.w3.org/2004/02/skos/core#notation> "sn" .
+
+<http://id.loc.gov/vocabulary/iso639-1/so> <http://www.w3.org/2004/02/skos/core#notation> "so" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sq> <http://www.w3.org/2004/02/skos/core#notation> "sq" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sr> <http://www.w3.org/2004/02/skos/core#notation> "sr" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ss> <http://www.w3.org/2004/02/skos/core#notation> "ss" .
+
+<http://id.loc.gov/vocabulary/iso639-1/st> <http://www.w3.org/2004/02/skos/core#notation> "st" .
+
+<http://id.loc.gov/vocabulary/iso639-1/su> <http://www.w3.org/2004/02/skos/core#notation> "su" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sv> <http://www.w3.org/2004/02/skos/core#notation> "sv" .
+
+<http://id.loc.gov/vocabulary/iso639-1/sw> <http://www.w3.org/2004/02/skos/core#notation> "sw" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ta> <http://www.w3.org/2004/02/skos/core#notation> "ta" .
+
+<http://id.loc.gov/vocabulary/iso639-1/te> <http://www.w3.org/2004/02/skos/core#notation> "te" .
+
+<http://id.loc.gov/vocabulary/iso639-1/tg> <http://www.w3.org/2004/02/skos/core#notation> "tg" .
+
+<http://id.loc.gov/vocabulary/iso639-1/th> <http://www.w3.org/2004/02/skos/core#notation> "th" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ti> <http://www.w3.org/2004/02/skos/core#notation> "ti" .
+
+<http://id.loc.gov/vocabulary/iso639-1/tk> <http://www.w3.org/2004/02/skos/core#notation> "tk" .
+
+<http://id.loc.gov/vocabulary/iso639-1/tl> <http://www.w3.org/2004/02/skos/core#notation> "tl" .
+
+<http://id.loc.gov/vocabulary/iso639-1/tn> <http://www.w3.org/2004/02/skos/core#notation> "tn" .
+
+<http://id.loc.gov/vocabulary/iso639-1/to> <http://www.w3.org/2004/02/skos/core#notation> "to" .
+
+<http://id.loc.gov/vocabulary/iso639-1/tr> <http://www.w3.org/2004/02/skos/core#notation> "tr" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ts> <http://www.w3.org/2004/02/skos/core#notation> "ts" .
+
+<http://id.loc.gov/vocabulary/iso639-1/tt> <http://www.w3.org/2004/02/skos/core#notation> "tt" .
+
+<http://id.loc.gov/vocabulary/iso639-1/tw> <http://www.w3.org/2004/02/skos/core#notation> "tw" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ty> <http://www.w3.org/2004/02/skos/core#notation> "ty" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ug> <http://www.w3.org/2004/02/skos/core#notation> "ug" .
+
+<http://id.loc.gov/vocabulary/iso639-1/uk> <http://www.w3.org/2004/02/skos/core#notation> "uk" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ur> <http://www.w3.org/2004/02/skos/core#notation> "ur" .
+
+<http://id.loc.gov/vocabulary/iso639-1/uz> <http://www.w3.org/2004/02/skos/core#notation> "uz" .
+
+<http://id.loc.gov/vocabulary/iso639-1/ve> <http://www.w3.org/2004/02/skos/core#notation> "ve" .
+
+<http://id.loc.gov/vocabulary/iso639-1/vi> <http://www.w3.org/2004/02/skos/core#notation> "vi" .
+
+<http://id.loc.gov/vocabulary/iso639-1/vo> <http://www.w3.org/2004/02/skos/core#notation> "vo" .
+
+<http://id.loc.gov/vocabulary/iso639-1/wa> <http://www.w3.org/2004/02/skos/core#notation> "wa" .
+
+<http://id.loc.gov/vocabulary/iso639-1/wo> <http://www.w3.org/2004/02/skos/core#notation> "wo" .
+
+<http://id.loc.gov/vocabulary/iso639-1/xh> <http://www.w3.org/2004/02/skos/core#notation> "xh" .
+
+<http://id.loc.gov/vocabulary/iso639-1/yi> <http://www.w3.org/2004/02/skos/core#notation> "yi" .
+
+<http://id.loc.gov/vocabulary/iso639-1/yo> <http://www.w3.org/2004/02/skos/core#notation> "yo" .
+
+<http://id.loc.gov/vocabulary/iso639-1/za> <http://www.w3.org/2004/02/skos/core#notation> "za" .
+
+<http://id.loc.gov/vocabulary/iso639-1/zh> <http://www.w3.org/2004/02/skos/core#notation> "zh" .
+
+<http://id.loc.gov/vocabulary/iso639-1/zu> <http://www.w3.org/2004/02/skos/core#notation> "zu" .

@@ -1,0 +1,13 @@
+<%# Partial template for recursive rendering of JSON-LD trees %>
+<% for k, v in object %>
+  <dl class="dl-horizontal">
+    <dt><%= k %></dt>
+    <dd>
+      <% if v.is_a? Hash %>
+        <%= render partial: "object", locals: {object: v } %>
+      <% else %>
+        <%= v %>
+      <% end %>
+    </dd>
+  </dl>
+<% end %>

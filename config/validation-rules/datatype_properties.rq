@@ -1,0 +1,54 @@
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:  <http://schema.org/>
+PREFIX spin:    <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?s ;
+    spin:violationPath ?datatypeProperty ;
+    spin:invalidValue ?o ;
+    rdfs:label ?violationLabelEN, ?violationLabelCS
+    .
+}
+WHERE {
+  GRAPH ?validatedGraph {
+    VALUES ?datatypeProperty {
+      schema:addressLocality
+      schema:addressRegion
+      schema:availableVacancies
+      schema:currency
+      dcterms:modified
+      dcterms:valid
+      schema:description
+      schema:duration
+      schema:isRemoteWork
+      schema:maxValue
+      schema:minValue
+      schema:name
+      schema:references
+      schema:responsibilites
+      schema:startDate
+      schema:streetAddress
+      schema:telephone
+      schema:title
+      schema:value
+    }
+    ?s ?datatypeProperty ?o .
+    FILTER (!isLiteral(?o))
+    BIND (STRLANG(CONCAT(
+      "The value of the property <",
+      str(?datatypeProperty),
+      "> must be a literal (text), not an object (\"",
+      str(?o),
+      "\")."
+    ), "en") AS ?violationLabelEN)
+    BIND (STRLANG(CONCAT(
+      "Hodnotou vlastnosti <",
+      str(?datatypeProperty),
+      "> musí být literál (text), ne objekt (\"",
+      str(?o),
+      "\")."
+    ), "cs") AS ?violationLabelCS)
+  }
+}

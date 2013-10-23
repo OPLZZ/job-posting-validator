@@ -1,0 +1,16 @@
+cs:
+  title: "JobPosting validátor"
+  home:
+    made_by: "Vytvořeno"
+  preview:
+    description: "Tohle jsme z vašich dat dostali..."
+    error: "Chyba"
+    error_dump: "Výpis chyb"
+    errors_no: "Počet chyb"
+    failed: "Neprošlo"
+    invalid_value: "Chybná hodnota"
+    passed: "Prošlo"
+    title: "Náhled"
+    validation_results: "Výsledky validace"
+    violation_path: "Chybná vlastnost"
+    violation_root: "Chybný zdroj"

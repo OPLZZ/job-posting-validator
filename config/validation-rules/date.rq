@@ -1,0 +1,46 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:    <http://spinrdf.org/spin#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?s ;
+    spin:violationPath ?p ;
+    spin:invalidValue ?date ;
+    rdfs:label "The value is not valid according to the xsd:date datatype."@en, 
+      "Hodnota není podle datového typu xsd:date validní."@cs
+    .
+}
+WHERE {
+  GRAPH <http://vocab.damepraci.eu> {
+    ?p rdfs:range xsd:date .
+  }
+  GRAPH ?validatedGraph {
+    {
+      ?s ?p ?rawDate .
+      BIND (substr(str(?rawDate), 0, 11) AS ?date) 
+      FILTER (!regex(
+        ?date,
+        "^(-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)$"
+      ))
+    } UNION {
+      ?s ?p ?rawDate .
+      BIND (substr(str(?rawDate), 0, 11) AS ?date) 
+      FILTER (regex(
+        str(?date),
+        "^(-?([1-9][0-9]{3,}|0[0-9]{3})-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])(Z|(\\+|-)((0[0-9]|1[0-3]):[0-5][0-9]|14:00))?)$"
+      ))
+      BIND (xsd:integer(substr(?date, 6, 2)) AS ?month)
+      BIND (xsd:integer(substr(?date, 9, 2)) AS ?day)
+      FILTER ((
+        (?month IN (4, 6, 9, 11))
+        &&
+        (?day > 30)
+      ) || (
+        (?month = 2)
+        &&
+        (?day > 29)
+      ))
+    }
+  }
+}

@@ -1,0 +1,28 @@
+PREFIX owl:     <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:    <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?s ;
+    spin:violationPath ?p ;
+    spin:invalidValue ?values ;
+    rdfs:label "The property cannot have more than 1 value for a given resource."@en, 
+      "Vlastnost nemůže mít více než 1 hodnotu pro daný zdroj."@cs
+    .
+}
+WHERE {
+  {
+    SELECT ?s ?p (GROUP_CONCAT(DISTINCT ?o; separator = "+ ") AS ?values)
+    WHERE {
+      GRAPH <http://vocab.damepraci.eu> {
+        ?p a owl:FunctionalProperty .
+      }
+      GRAPH ?validatedGraph {
+        ?s ?p ?o .
+      }
+    }
+    GROUP BY ?s ?p
+    HAVING (COUNT(DISTINCT ?o) > 1)
+  }
+}

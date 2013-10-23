@@ -1,0 +1,67 @@
+# TODO: Handle rdfs:subPropertyOf?
+
+PREFIX owl:     <http://www.w3.org/2002/07/owl#>
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:    <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?s ;
+    spin:violationPath ?p1 ;
+    spin:invalidValue ?o ;
+    rdfs:label ?violationLabelEN, 
+      ?violationLabelCS
+    .
+}
+WHERE {
+  {
+    SELECT DISTINCT ?s ?p1 ?o ?violationLabelEN ?violationLabelCS
+    WHERE {
+      GRAPH ?validatedGraph { 
+        ?s ?p1 ?o .
+        ?o ?p2 ?o2 .
+      }
+      # Check if rdfs:range and rdfs:domain are available for the properties.
+      GRAPH <http://vocab.damepraci.eu> {
+        ?p1 rdfs:range [] .
+        ?p2 rdfs:domain [] .
+      }
+      # Check if rdfs:range and rdfs:domain matches.
+      FILTER NOT EXISTS {
+        GRAPH <http://vocab.damepraci.eu> {
+          {
+            ?p1 rdfs:range/rdfs:subClassOf*/^rdfs:domain ?p2 .
+          } UNION {
+            ?p2 rdfs:domain [
+              owl:unionOf ?unionOf
+            ] .
+            ?unionOf rdf:rest*/rdf:first/rdfs:subClassOf*/^rdfs:range ?p1 .
+          } UNION {
+            ?p1 rdfs:range [
+              owl:unionOf ?unionOf
+            ] .
+            ?unionOf rdf:rest*/rdf:first/rdfs:subClassOf*/^rdfs:domain ?p2 .
+          } UNION {
+            ?p1 rdfs:range/owl:unionOf/rdf:rest*/rdf:first/rdfs:subClassOf* ?class .
+            ?p2 rdfs:domain/owl:unionOf/rdf:rest*/rdf:first/rdfs:subClassOf* ?class .
+          }
+        }
+      }
+      BIND (STRLANG(CONCAT(
+        "The value of property <",
+        str(?p1),
+        "> is either not allowed or it is not to be used with the property <",
+        str(?p2),
+        ">."
+      ), "en") AS ?violationLabelEN)
+      BIND (STRLANG(CONCAT(
+        "Hodnota vlastnosti <",
+        str(?p1),
+        "> buď není přípustná nebo nelze použít s vlastností <",
+        str(?p2),
+        ">."
+      ), "cs") AS ?violationLabelCS)
+    }
+  }
+}

@@ -1,0 +1,25 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:  <http://schema.org/>
+PREFIX spin:    <http://spinrdf.org/spin#>
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?s ;
+    spin:violationPath schema:isRemoteWork ;
+    spin:invalidValue ?isRemoteWork ;
+    rdfs:label "Job posting cannot advertise remote work as having a location."@en, 
+      "Nabídka práce na dálku nesmí obsahovat místo výkonu práce."@cs
+    .
+}
+WHERE {
+  GRAPH ?validatedGraph {
+    ?s schema:isRemoteWork ?isRemoteWork .
+    FILTER (xsd:boolean(?isRemoteWork))
+    {
+      ?s schema:jobLocation [] .
+    } UNION {
+      ?s schema:address [] .
+    }
+  }
+}
