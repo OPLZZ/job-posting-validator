@@ -1,28 +1,8 @@
-== README
+== job-posting-validator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a validator and preview for {RDFa-encoded}[http://www.w3.org/TR/rdfa-in-html/] data described using {Schema.org}[http://schema.org]'s {+JobPosting+}[http://schema.org/JobPosting].
 
-Things you may want to cover:
+=== Usage
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Run +rake validator:fuseki:init+ to start the database ({Fuseki server}[http://jena.apache.org/documentation/serving_data/index.html]) and load background data.
+* Deploy the Rails app. 
