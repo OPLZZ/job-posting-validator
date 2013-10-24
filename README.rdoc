@@ -9,3 +9,7 @@ This is a validator and preview for {RDFa-encoded}[http://www.w3.org/TR/rdfa-in-
 * Other useful Rake tasks (run <tt>rake -T validator</tt>):
   * <tt>rake validator:fuseki:stop</tt> to stop the Fuseki server.
   * <tt>rake validator:data:import_background_data</tt> to download background data, including the Schema.org vocabulary.
+
+=== Non-Ruby dependencies
+
+The validator depends on {Fuseki server}[http://jena.apache.org/documentation/serving_data/index.html] and expects <tt>fuseki-server</tt> executable to be on +PATH+.
