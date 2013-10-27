@@ -5,6 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 TODO
+*.lock
 
 # Ignore bundler config.
 /.bundle
