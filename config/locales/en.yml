@@ -10,6 +10,7 @@ en:
     errors_no: "Number of errors"
     failed: "Failed"
     invalid_value: "Invalid value"
+    no_job_posting: "No instances of JobPosting class were found."
     passed: "Passed"
     title: "Preview"
     validation_results: "Validation results"
