@@ -8,7 +8,7 @@ PREFIX spin:    <http://spinrdf.org/spin#>
 CONSTRUCT {
   [] a spin:ConstraintViolation ;
     spin:violationRoot ?s ;
-    spin:violationPath ?p1 ;
+    spin:violationPath ?p1, ?p2 ;
     spin:invalidValue ?o ;
     rdfs:label ?violationLabelEN, 
       ?violationLabelCS
@@ -16,7 +16,7 @@ CONSTRUCT {
 }
 WHERE {
   {
-    SELECT DISTINCT ?s ?p1 ?o ?violationLabelEN ?violationLabelCS
+    SELECT DISTINCT ?s ?p1 ?p2 ?o ?violationLabelEN ?violationLabelCS
     WHERE {
       GRAPH ?validatedGraph { 
         ?s ?p1 ?o .
