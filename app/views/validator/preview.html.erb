@@ -31,7 +31,17 @@
                 <%= @error["violationPath"] %>
               <% end %>
             </td>
-            <td><%= @error["invalidValue"] %></td>
+            <td>
+              <% if @error["invalidValue"].key? "@id" %>
+                <% if @error["invalidValue"]["@id"].start_with? "_:" %>
+                  <%# Omit display? %>
+                <% else %>
+                  <a href="<%= @error["invalidValue"]["@id"] %>"><%= @error["invalidValue"]["@id"] %></a>
+                <% end %>
+              <% else %>
+                <%= @error["invalidValue"] %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

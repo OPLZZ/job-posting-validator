@@ -87,6 +87,14 @@ class ValidatorController < ApplicationController
     end
   end
 
+  # Remove unwanted properties from a JobPosting instance
+  def filter_job_posting(job_posting)
+    job_posting.reject do |k, v|
+      (k == "http://www.w3.org/ns/rdfa#usesVocabulary") ||
+      ((k == "@id") && v.empty?) 
+    end 
+  end
+
   def filter_locale(errors)
     errors.map do |error|
       Hash[error.map { |k, v| [k, choose_locale(v)] }] 
@@ -112,7 +120,10 @@ class ValidatorController < ApplicationController
   def nest(hash)
     graph = hash["@graph"]
     job_postings = select_job_postings graph
-    job_postings.map { |job_posting| replace_blank_nodes(job_posting, graph) }
+    job_postings.map do |job_posting|
+      filtered_job_posting = filter_job_posting job_posting
+      replace_blank_nodes(filtered_job_posting, graph)
+    end
   end
 
   def parse(data)

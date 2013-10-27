@@ -4,9 +4,17 @@
     <dt><%= k %></dt>
     <dd>
       <% if v.is_a? Hash %>
-        <%= render partial: "object", locals: {object: v } %>
+        <% if v.key? "@language" %>
+          <%= v["@value"] %>
+        <% else %>
+          <%= render partial: "object", locals: {object: v } %>
+        <% end %>
       <% else %>
-        <%= v %>
+        <% if v.start_with? "http://" %>
+          <a href="<%= v %>"><%= v %></a>
+        <% else %>
+          <%= v %>
+        <% end %>
       <% end %>
     </dd>
   </dl>
