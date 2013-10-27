@@ -1,5 +1,6 @@
 cs:
-  title: "JobPosting validátor"
+  errors:
+    syntax: "Syntaktická chyba ve vstupních datech"
   home:
     made_by: "Vytvořeno"
   preview:
@@ -14,3 +15,4 @@ cs:
     validation_results: "Výsledky validace"
     violation_path: "Chybná vlastnost"
     violation_root: "Chybný zdroj"
+  title: "JobPosting validátor"

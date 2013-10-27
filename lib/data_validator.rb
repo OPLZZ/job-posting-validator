@@ -1,7 +1,10 @@
 require "digest/sha1"
 
 class DataValidator
-
+  ##
+  # Parses RDFa embedded in HTML and runs several SPARQL tests
+  # on the extracted RDF.
+  
   IGNORED_ATTRS = ["@id"]
 
   JSONLD_CONTEXT = JSON.parse(File.read(
@@ -64,17 +67,14 @@ class DataValidator
   end
 
   # Loads +data+ into a named graph, returns the automatically generated graph name
+  # Throws <tt>SPARQL::Client::MalformedQuery</tt> exception for syntactically invalid data.
   def load_data(data)
     sha1 = Digest::SHA1.hexdigest data.dump(:turtle)
     graph_name = RDF::URI.new(@namespace + sha1)
     data = add_timestamp(graph_name, data)
 
-    begin 
-      @sparql_update.insert_data(data, graph: graph_name)# TODO: Catch 400 Parse error
-      graph_name
-    rescue SPARQL::Client::MalformedQuery => error
-      abort error.message
-    end
+    @sparql_update.insert_data(data, graph: graph_name)
+    graph_name
   end
 
   # Parse HTML +data+ with RDFa into RDF graph

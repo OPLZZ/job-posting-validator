@@ -15,11 +15,17 @@ class ValidatorController < ApplicationController
     begin
       parsed_graph = parse payload
     rescue RDF::ReaderError => error
-      redirect_to "index", flash: { error: error.message }
+      flash[:error] = error.message
+      return redirect_to :action => "index"
     end
     @job_postings = convert_to_json parsed_graph
-   
-    results = validate parsed_graph
+
+    begin   
+      results = validate parsed_graph
+    rescue SPARQL::Client::MalformedQuery
+      flash[:error] = I18n.translate("errors.syntax")
+      return redirect_to :action => "index"
+    end 
     @errors = results[:errors]
 
     render "preview" 
