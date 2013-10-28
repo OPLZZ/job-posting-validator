@@ -18,7 +18,7 @@
         <tr>
           <td>
             <%= error["label"] %>
-            <% if error.has_key? "comment" %>
+            <% if error.key? "comment" %>
               <span class="has-tooltip icon-info-sign"
                  data-original-title="<%= error["comment"] %>"></span>
             <% end %>
@@ -31,12 +31,16 @@
             <% end %>
           </td>
           <td>
-            <% if error["invalidValue"].key? "@id" %>
-              <% if error["invalidValue"]["@id"].start_with? "_:" %>
-                <%# Omit display? %>
-              <% else %>
-                <a href="<%= error["invalidValue"]["@id"] %>"><%= error["invalidValue"]["@id"] %></a>
-              <% end %>
+            <% if error["invalidValue"].is_a?(Hash) %>
+              <% if error["invalidValue"].key?("@id") %>
+                <% if error["invalidValue"]["@id"].start_with? "_:" %>
+                  <%# Omit display? %>
+                <% else %>
+                  <a href="<%= error["invalidValue"]["@id"] %>"><%= error["invalidValue"]["@id"] %></a>
+                <% end %>
+              <% elsif error["invalidValue"].key?("@language") %>
+                <%= error["invalidValue"]["@value"] %>
+              <% end %> 
             <% else %>
               <%= error["invalidValue"] %>
             <% end %>

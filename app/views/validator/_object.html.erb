@@ -9,6 +9,21 @@
         <% else %>
           <%= render partial: "object", locals: {object: v } %>
         <% end %>
+      <% elsif v.is_a? Array %>
+        <% if v.all? { |item| item.is_a?(Hash) } %>
+          <% if v.all? { |item| item.key?("@language") } %>
+            <%= v.map { |item| item["@value"] }.join(", ") %>
+          <% else %> 
+            <% for subv in v %> 
+              <%= render partial: "object", locals: {object: subv } %>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= v.select { |item| item.is_a?(String) }.join(", ") %>
+          <% for subv in v.select { |item| item.is_a?(Hash) } %>
+            <%= render partial: "object", locals: {object: subv } %>
+          <% end %>
+        <% end %>
       <% else %>
         <% if v.start_with? "http://" %>
           <a href="<%= v %>"><%= v %></a>

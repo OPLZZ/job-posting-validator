@@ -89,8 +89,12 @@ class ValidatorController < ApplicationController
 
   # Remove unwanted properties from a JobPosting instance
   def filter_job_posting(job_posting)
+    rejected_keys = [
+      "http://www.w3.org/ns/rdfa#usesVocabulary",
+      "http://www.w3.org/ns/md#item"
+    ]
     job_posting.reject do |k, v|
-      (k == "http://www.w3.org/ns/rdfa#usesVocabulary") ||
+      (rejected_keys.include? k) ||
       ((k == "@id") && v.empty?) 
     end 
   end
