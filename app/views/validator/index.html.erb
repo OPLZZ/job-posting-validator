@@ -1,48 +1,44 @@
-<form id="input-form" class="form-inline" method="POST" enctype="multipart/form-data">
-  <fieldset>
+<ul class="nav nav-tabs" id="formtabs">
+  <li class="active">
+    <a href="#tab-url" data-toggle="tab"><label for="url">Validate URL</label></a>
+  </li>
+  <li>
+    <a href="#tab-file" data-toggle="tab"><label for="file">Validate local file</label></a>
+  </li>
+  <li>
+    <a href="#tab-text" data-toggle="tab"><label for="text">Validate direct text input</label></a>
+  </li>
+</ul>
 
-    <ul class="nav nav-tabs" id="formtabs">
-      <li class="active">
-        <a href="#tab-url" data-toggle="tab"><label for="url">Validate URL</label></a>
-      </li>
-      <li>
-        <a href="#tab-file" data-toggle="tab"><label for="file">Validate local file</label></a>
-      </li>
-      <li>
-        <a href="#tab-text" data-toggle="tab"><label for="text">Validate direct text input</label></a>
-      </li>
-    </ul>
-    
-    <div class="tab-content">
+<div class="tab-content">
+  <div class="tab-pane control-group active" id="tab-url">
+    <form class="form-inline" method="GET">
+      <fieldset class="controls">
+        <input id="url" name="url" placeholder="Enter URL to validate"
+               autofocus="true" type="url" class="input-xxlarge">
+        <button id="submit" name="submit" type="submit" class="btn-large btn-primary">Validate</button>
+      </fieldset>
+    </form>
+  </div>
 
-      <div class="tab-pane control-group active" id="tab-url">
-        <div class="controls">
-          <input id="url" name="url" placeholder="Enter URL to validate"
-                 autofocus="true" type="url" class="input-xxlarge">
-        </div>
-      </div>
-
-      <div class="tab-pane control-group" id="tab-file">
-        <div class="controls">
-          <input id="file" name="file" class="input-file" type="file">
-        </div>
-      </div>
-      
-      <div class="tab-pane control-group" id="tab-text">
-        <div class="controls">                     
+  <div class="tab-pane" id="tab-file">
+    <form method="POST" enctype="multipart/form-data">
+      <fieldset class="controls">
+        <input id="file" name="file" class="input-file" type="file">
+        <button id="submit" name="submit" type="submit" class="btn-large btn-primary">Validate</button>
+      </fieldset>
+    </form>
+  </div>
+  
+  <div class="tab-pane" id="tab-text">
+    <form method="POST" enctype="multipart/form-data">
+      <fieldset class="controls">
+        <p>
           <textarea autofocus="true" id="text" name="text" placeholder="paste your markup here"
                     class="span9" rows="15"></textarea>
-        </div>
-      </div>
-
-    </div>
-    
-    <div id="submit-control" class="control-group">
-      <div class="controls">
-        <button id="submit" name="submit" type="submit" class="btn-large btn-primary">Validate</button>
-      </div>
-    </div>
-
-  </fieldset>
-</form>
-
+        </p>
+        <p><button id="submit" name="submit" type="submit" class="btn-large btn-primary">Validate</button></p>
+      </fieldset>
+    </form>
+  </div>
+</div>
