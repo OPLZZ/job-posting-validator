@@ -14,15 +14,11 @@
           <% if v.all? { |item| item.key?("@language") } %>
             <%= v.map { |item| item["@value"] }.join(", ") %>
           <% else %> 
-            <% for subv in v %> 
-              <%= render partial: "object", collection: subv %>
-            <% end %>
+            <%= render partial: "object", collection: v %>
           <% end %>
         <% else %>
           <%= v.select { |item| item.is_a?(String) }.join(", ") %>
-          <% v.select { |item| item.is_a?(Hash) }.each do |subv| %>
-            <%= render partial: "object", collection: subv %>
-          <% end %>
+          <%= render partial: "object", collection: v.select { |item| item.is_a?(Hash) }  %>
         <% end %>
       <% else %>
         <% if v.start_with? "http://" %>
