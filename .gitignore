@@ -5,7 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 TODO
-*.lock
+vendor/jena-fuseki-*
 
 # Ignore bundler config.
 /.bundle

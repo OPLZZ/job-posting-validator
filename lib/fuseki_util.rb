@@ -12,6 +12,13 @@ module FusekiUtil
       sparql_update.clear(:graph, old_graph)
     end
   end
+  
+  # Test if path is executable fuseki-server script
+  def fuseki_available?(**args)
+    prefix = get_fuseki_command_prefix args
+    command = "#{prefix}fuseki-server --version > /dev/null 2>&1"
+    !!(system command)
+  end
 
   # Source: http://t-a-w.blogspot.com/2010/04/how-to-kill-all-your-children.html
   def get_child_pids(parent_pid)
@@ -45,6 +52,10 @@ module FusekiUtil
     response.map do |binding|
       binding[:graph].to_s
     end
+  end
+
+  def get_fuseki_command_prefix(args)
+    args.key?(:path) ? "cd #{args[:path]}; #{args[:path]}/" : ""
   end
 
   # Return the number of triples in the Fuseki store
@@ -81,6 +92,19 @@ module FusekiUtil
     else
       false
     end
+  end
+
+  # Spawn Fuseki Server and return its process ID
+  def spawn_server(options = {}, **args)
+    prefix = get_fuseki_command_prefix args
+    command = "#{prefix}fuseki-server --memTDB --update --port #{options["port"]} "\
+              "--jetty-config=#{File.join(Rails.root, "config", "jetty-fuseki.xml")} "\
+              "/#{options["dataset"]} > /dev/null"
+    spawn command
+  end
+
+  def vendor_fuseki_path
+    Dir[File.join(Rails.root, "vendor", "jena-fuseki-*")].first
   end
 
   def write_pid(pid)

@@ -1,4 +1,6 @@
+require "fileutils"
 require "fuseki_util"
+require "open-uri"
 include FusekiUtil
 
 namespace :validator do
@@ -75,7 +77,7 @@ namespace :validator do
     end
 
     def write_data(data, filename)
-      path = "#{Rails.root}/data/validator/bootstrap/#{filename}"
+      path = File.join(Rails.root, "data", "validator", "bootstrap", filename)
       File.open(path, "w") { |f| f.write(data) }
     end
   end
@@ -97,8 +99,37 @@ namespace :validator do
       File.open(config_path, "w") { |file| file.write(config.to_xml) } 
     end
 
+    desc "Download the Fuseki Server. Specify the desired Fuseki version number"\
+         "as $FUSEKI_VERSION environment variable (default is 1.0.0)."
+    task :download do
+      puts "Downloading Fuseki Server"
+      version_number = ENV["FUSEKI_VERSION"] || "1.0.0" 
+      url = "http://www.apache.org/dist/jena/binaries/jena-fuseki-#{version_number}-distribution.zip"
+        
+      begin
+        progress_bar = nil
+        @response = open(url,
+                         content_length_proc: lambda { |_|
+                           progress_bar = ProgressBar.create(title: "Downloading", total: nil)
+                         },
+                         progress_proc: lambda { |size|
+                           progress_bar.progress += size if progress_bar
+                         })
+      rescue OpenURI::HTTPError => e
+        puts e.message
+        exit
+      end
+    end
+
     desc "Initialize Fuseki (start server + load data)"
     task :init => [:start, :load]
+
+    desc "Download and install Fuseki server" 
+    task :install => [:download, :unzip] do
+      # Make fuseki-server executable
+      File.chmod(766, File.join(vendor_fuseki_path, "fuseki-server")) 
+      puts "Fuseki Server installed"
+    end
 
     desc "Load background data into the Fuseki RDF store"
     task :load => [:environment, :check_running] do
@@ -147,16 +178,22 @@ namespace :validator do
     task :start => :configure_jetty do
       puts "Starting the Fuseki server..."
       raise "Fuseki server already running" if server_running?
-      raise "Unable to find fuseki-server" unless system("fuseki-server --version > /dev/null")
 
-      fuseki = ValidatorApp.config["validator"]
-      pid = spawn "fuseki-server --memTDB --update --port #{fuseki["port"]} "\
-                  "--jetty-config=#{File.join("config", "jetty-fuseki.xml")} "\
-                  "/#{fuseki["dataset"]} > /dev/null"
-      Process.detach(pid) # Detach the pid
-      write_pid pid       # Keep track of the pid
+      fuseki_config = ValidatorApp.config["validator"]
+     
+      if fuseki_available? 
+        pid = spawn_server fuseki_config
+      elsif fuseki_available? path: vendor_fuseki_path
+        pid = spawn_server(fuseki_config, path: vendor_fuseki_path)
+      else
+        raise "Unable to find fuseki-server. Install it "\
+              "by using: rake validator:fuseki:install" 
+      end
+      
+      Process.detach(pid) # Detach the process ID
+      write_pid pid       # Keep track of the process ID
       sleep 10            # Let Fuseki take a deep breath before sending data in
-      puts "Fuseki server started on http://localhost:#{fuseki["port"]}" 
+      puts "Fuseki server started on http://localhost:#{fuseki_config["port"]}" 
     end
 
     desc "Stop the Fuseki server"
@@ -175,6 +212,22 @@ namespace :validator do
         puts "Failed"
         puts e.inspect
       end 
+    end
+
+    desc "Unzip the downloaded Fuseki Server distribution"
+    task :unzip => :download do
+      Zip::Archive.open(@response.path) do |archive|
+        archive.each do |entry|
+          path = File.join("vendor", entry.name)
+          FileUtils.mkdir_p(File.dirname(path))
+          if entry.directory?
+            FileUtils.mkdir_p(path)
+          else
+            File.open(path, "wb") { |f| f << entry.read }
+          end
+        end
+      end
+      puts "Fuseki Server unzipped"
     end
   end
 end

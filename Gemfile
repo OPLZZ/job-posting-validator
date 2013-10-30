@@ -44,12 +44,15 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem "rspec-rails", "~> 2.0", group: [:development, :test]
+
 gem "logger", "~> 1.2.8"
 gem "rest-client", "~> 1.6.7"
 gem "zipruby", "~> 0.3.6"
 gem "nokogiri", "~> 1.6.0"
 gem "equivalent-xml", "~> 0.3.0"
 gem "json", "~> 1.8.0"
+gem "ruby-progressbar", "~> 1.2.0"
 gem "rdf", "~> 1.0.7"
 gem "rdf-rdfa", "~> 1.0.2"
 gem "rdf-microdata", "~> 1.0.0"
