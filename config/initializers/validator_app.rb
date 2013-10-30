@@ -7,6 +7,12 @@ include FusekiUtil
 module ValidatorApp
   # Configuration for the application
   # (loaded once)
+
+  # Check if the Fuseki server is running
+  if !server_running?
+    puts "Fuseki Server isn't running. Start it by using: rake validator:fuseki:init"
+    exit
+  end
  
   def self.config
     @config ||= YAML.load_file(File.join(Rails.root, "config", "config.yml"))[Rails.env]
@@ -22,9 +28,6 @@ module ValidatorApp
 
   # Instance of SPARQL validator used in controllers
   def self.instance
-    # Check if the Fuseki server is running
-    raise "Fuseki server isn't running" unless server_running?
-
     config = ValidatorApp.config["validator"]
     base_url = "http://127.0.0.1:#{config["port"]}/#{config["dataset"]}/"
     @instance ||= ::DataValidator.new(
