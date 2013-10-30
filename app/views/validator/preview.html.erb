@@ -14,7 +14,7 @@
       </tr>
     </thead>
     <tbody>
-      <% for error in @errors %>
+      <% @errors.each do |error| %>
         <tr>
           <td>
             <%= error["label"] %>
@@ -60,8 +60,6 @@
   <p><%= t "preview.description" %></p>
 
   <div id="preview">  
-    <% for job_posting in @job_postings %>
-      <div><%= render partial: "object", locals: {object: job_posting } %></div>
-    <% end %>
+    <%= render partial: "object", collection: @job_postings %>
   </div>
 <% end %>
