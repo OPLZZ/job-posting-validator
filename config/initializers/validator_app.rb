@@ -1,19 +1,10 @@
 require "data_validator"
-require "fuseki_util"
 require "open-uri"
-
-include FusekiUtil
 
 module ValidatorApp
   # Configuration for the application
   # (loaded once)
 
-  # Check if the Fuseki server is running
-  if !server_running?
-    puts "Fuseki Server isn't running. Start it by using: rake validator:fuseki:init"
-    exit
-  end
- 
   def self.config
     @config ||= YAML.load_file(File.join(Rails.root, "config", "config.yml"))[Rails.env]
   end

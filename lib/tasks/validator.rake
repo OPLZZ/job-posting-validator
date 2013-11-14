@@ -109,11 +109,13 @@ namespace :validator do
       begin
         progress_bar = nil
         @response = open(url,
-                         content_length_proc: lambda { |_|
-                           progress_bar = ProgressBar.create(title: "Downloading", total: nil)
+                         content_length_proc: lambda { |total|
+                           progress_bar = ProgressBar.create(title: "Downloading", total: total)
                          },
                          progress_proc: lambda { |size|
-                           progress_bar.progress += size if progress_bar
+                           if progress_bar && progress_bar.progress < (progress_bar.total - size)
+                             progress_bar.progress += size
+                           end 
                          })
       rescue OpenURI::HTTPError => e
         puts e.message
