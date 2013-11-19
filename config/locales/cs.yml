@@ -1,5 +1,6 @@
 cs:
   errors:
+    input: "Chybný vstup"
     syntax: "Syntaktická chyba ve vstupních datech"
   home:
     made_by: "Vytvořeno"

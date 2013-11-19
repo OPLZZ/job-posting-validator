@@ -1,5 +1,6 @@
 en:
   errors:
+    input: "Invalid input"
     syntax: "Syntax error in the input data"
   home:
     made_by: "Made by"
