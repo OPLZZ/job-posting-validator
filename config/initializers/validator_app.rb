@@ -22,11 +22,11 @@ module ValidatorApp
     config = ValidatorApp.config["validator"]
     base_url = "http://127.0.0.1:#{config["port"]}/#{config["dataset"]}/"
     @instance ||= ::DataValidator.new(
-      :base_uri               => config["base_uri"],
-      :namespace              => config["namespace"],
-      :sparql_endpoint        => "#{base_url}sparql",
-      :sparql_update_endpoint => "#{base_url}update", 
-      :test_dir               => "#{Rails.root}/config/validation-rules"
+      base_uri:               config["base_uri"],
+      namespace:              config["namespace"],
+      sparql_endpoint:        "#{base_url}sparql",
+      sparql_update_endpoint: "#{base_url}update", 
+      test_dir:               "#{Rails.root}/config/validation-rules"
     )
   end
 

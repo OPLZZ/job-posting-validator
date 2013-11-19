@@ -8,13 +8,16 @@ Bundler.require(:default, Rails.env)
 
 module Validator
   class Application < Rails::Application
-    #config.before_initialize do
-    #  # Check if the Fuseki server is running
-    #  if !server_running?
-    #    puts "Fuseki Server isn't running. Start it by using: rake validator:fuseki:init"
-    #    exit
-    #  end
-    #end
+    config.before_initialize do
+      require "fuseki_util"
+      include FusekiUtil
+
+      # Check if the Fuseki server is running
+      if !server_running?
+        puts "Fuseki Server isn't running. Start it by using: rake validator:fuseki:init"
+        exit
+      end
+    end
  
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
