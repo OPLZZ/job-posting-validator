@@ -4,7 +4,7 @@ This is a validator and preview for {RDFa-encoded}[http://www.w3.org/TR/rdfa-in-
 
 === Usage
 
-* If you don't have {Fuseki server}[http://jena.apache.org/documentation/serving_data/index.html] installed, run <tt>rake validator:fuseki:install</tt>.
+* If you don't have {Fuseki server}[http://jena.apache.org/documentation/serving_data/index.html] installed, you can install it by running <tt>rake validator:fuseki:install</tt>.
 * Run <tt>rake validator:fuseki:init</tt> to start the database (Fuseki Server) and load background data.
 * Deploy the Rails app.
 * Other useful Rake tasks (run <tt>rake -T validator</tt> to list the available tasks):

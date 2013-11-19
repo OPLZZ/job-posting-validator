@@ -30,8 +30,9 @@ class Webpage
     else
       begin
         validation_results = validator.validate data
-        # ActiveRecord::Base.logger.debug validation_results
-        errors[:validation] << preprocess_errors(filter_locale(validation_results)) unless validation_results.empty?
+        unless validation_results.empty?
+          errors[:validation] << preprocess_errors(filter_locale(validation_results))
+        end 
       rescue SPARQL::Client::MalformedQuery
         errors[:sparql] << I18n.translate("errors.syntax") 
       end
