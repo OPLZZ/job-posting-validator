@@ -1,0 +1,4 @@
+@prefix :       <http://example.com/> .
+@prefix schema: <http://schema.org/> .
+
+:invalid-job-posting schema:availableVacancies 0 .

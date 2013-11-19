@@ -1,0 +1,5 @@
+@prefix :       <http://example.com/> .
+@prefix schema: <http://schema.org/> .
+
+:compensation schema:type "Annual"@en, "Monthly"@en ;
+  schema:currency "EUR", "USD", "CZK" .

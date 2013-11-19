@@ -1,0 +1,5 @@
+@prefix :       <http://example.com/> .
+@prefix schema: <http://schema.org/> .
+
+:invalid-job-posting schema:contact :invalid-contact .
+:invalid-contact schema:jobLocation :job-location . 

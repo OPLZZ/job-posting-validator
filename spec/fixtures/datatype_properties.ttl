@@ -1,0 +1,6 @@
+@prefix :        <http://example.com/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema:  <http://schema.org/> .
+
+:invalid-job-posting schema:title [] ;
+  dcterms:modified <http://reference.data.gov.uk/id/day/2013-01-04> .

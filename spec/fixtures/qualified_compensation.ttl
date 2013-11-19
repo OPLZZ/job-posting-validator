@@ -1,0 +1,10 @@
+@prefix :       <http://example.com/> .
+@prefix schema: <http://schema.org/> .
+
+[] schema:compensation :invalid-compensation1, :invalid-compensation2 .
+
+:invalid-compensation1 schema:value 1234.5 .
+
+:invalid-compensation2 schema:minValue 1234.5 ;
+  schema:maxValue 6789.0 ;
+  schema:currency "EUR" .

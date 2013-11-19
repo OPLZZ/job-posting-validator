@@ -1,0 +1,6 @@
+@prefix :       <http://example.com/> .
+@prefix schema: <http://schema.org/> .
+
+:job-posting schema:compensation :invalid-compensation1, :invalid-compensation2 .
+
+:invalid-compensation1 schema:currency "CZK" .
