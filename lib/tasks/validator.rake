@@ -4,21 +4,26 @@ require "open-uri"
 include FusekiUtil
 
 namespace :validator do
+  desc "Load configuration of the application"
+  task :load_config do
+    @config = YAML.load_file(File.join(Rails.root, "config", "config.yml"))[Rails.env]["validator"]
+  end
+
   namespace :data do
     desc "Import background data used for validation"
     task :import_background_data => [:currency_codes, :iso639_1, :schema_org] 
     
     desc "Import currency codes"
-    task :currency_codes => :environment do
-      paths = ValidatorApp.config["validator"]["files_to_load"]["http://data.damepraci.cz/resource/currency-codes"]
+    task :currency_codes => "rake:validator:load_config" do
+      paths = @config["files_to_load"]["http://data.damepraci.cz/resource/currency-codes"]
       currencyCodes = RestClient.get paths["remote"].first
       write_data(currencyCodes, paths["local"])
       puts "Currency codes imported"
     end
 
     desc "Import ISO 639-1 language codes"
-    task :iso639_1 => :environment do
-      paths = ValidatorApp.config["validator"]["files_to_load"]["http://id.loc.gov/vocabulary/iso639-1"]
+    task :iso639_1 => "rake:validator:load_config" do
+      paths = @config["files_to_load"]["http://id.loc.gov/vocabulary/iso639-1"]
       turtle = unzip(RestClient.get paths["remote"].first)
       graph = RDF::Graph.new << RDF::Turtle::Reader.new(turtle)
       
@@ -44,9 +49,9 @@ namespace :validator do
     end
     
     desc "Import Schema.org + extensions for job market"
-    task :schema_org => :environment do
+    task :schema_org => "rake:validator:load_config" do
       puts "Importing Schema.org + extensions for job market... it may take a while."
-      paths = ValidatorApp.config["validator"]["files_to_load"]["http://vocab.damepraci.eu"]
+      paths = @config["files_to_load"]["http://vocab.damepraci.eu"]
       graph = RDF::Graph.new
       paths["remote"].each do |url|
         turtle = download url
@@ -89,8 +94,8 @@ namespace :validator do
     end
 
     desc "Update Jetty configuration"
-    task :configure_jetty => :environment do
-      port = ValidatorApp.config["validator"]["port"]
+    task :configure_jetty => "rake:validator:load_config" do
+      port = @config["port"]
       
       config_path = File.join(Rails.root, "config", "jetty-fuseki.xml")
       config = Nokogiri::XML(File.open(config_path))
@@ -134,24 +139,23 @@ namespace :validator do
     end
 
     desc "Load background data into the Fuseki RDF store"
-    task :load => [:environment, :check_running] do
+    task :load => ["rake:validator:load_config", :check_running] do
       puts "Loading background data..."
-      fuseki = ValidatorApp.config["validator"]
-      data_endpoint = "http://127.0.0.1:#{fuseki["port"]}/#{fuseki["dataset"]}/data"
+      data_endpoint = "http://127.0.0.1:#{@config["port"]}/#{@config["dataset"]}/data"
     
-      fuseki["files_to_load"].each do |named_graph, paths|
+      @config["files_to_load"].each do |named_graph, paths|
         load_path = data_path paths["local"]
         raise "File #{load_path} doesn't exist" unless File.exist? load_path
 
         request_url = "#{data_endpoint}?graph=#{named_graph}"
         response = RestClient::Request.execute(
-          :headers  => {
-            :content_type => "text/turtle"
+          headers: {
+            content_type: "text/turtle"
           },
-          :method   => :put,
-          :payload  => File.read(load_path),
-          :timeout  => 300,
-          :url      => request_url
+          method:  :put,
+          payload: File.read(load_path),
+          timeout: 300,
+          url:     request_url
         )
         raise "Loading file #{load_path} failed. Response status #{response.code}" unless response.code == 201
       end
@@ -159,9 +163,8 @@ namespace :validator do
     end
 
     desc "Prune Fuseki store"
-    task :prune => [:environment, :check_running] do
-      fuseki = ValidatorApp.config["validator"]
-      endpoint_base = "http://127.0.0.1:#{fuseki["port"]}/#{fuseki["dataset"]}/"
+    task :prune => ["rake:validator:load_config", :check_running] do
+      endpoint_base = "http://127.0.0.1:#{@config["port"]}/#{@config["dataset"]}/"
       query_endpoint = endpoint_base + "query"
       update_endpoint = endpoint_base + "update"
 
@@ -181,21 +184,19 @@ namespace :validator do
       puts "Starting the Fuseki server..."
       raise "Fuseki server already running" if server_running?
 
-      fuseki_config = ValidatorApp.config["validator"]
-     
       if fuseki_available? 
-        pid = spawn_server fuseki_config
+        pid = spawn_server @config
       elsif fuseki_available? path: vendor_fuseki_path
-        pid = spawn_server(fuseki_config, path: vendor_fuseki_path)
+        pid = spawn_server(@config, path: vendor_fuseki_path)
       else
         raise "Unable to find fuseki-server. Install it "\
               "by using: rake validator:fuseki:install" 
       end
       
-      Process.detach(pid) # Detach the process ID
+      Process.detach pid  # Detach the process ID
       write_pid pid       # Keep track of the process ID
       sleep 10            # Let Fuseki take a deep breath before sending data in
-      puts "Fuseki server started on http://localhost:#{fuseki_config["port"]}" 
+      puts "Fuseki server started on http://localhost:#{@config["port"]}" 
     end
 
     desc "Stop the Fuseki server"
