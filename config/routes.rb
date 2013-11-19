@@ -2,8 +2,8 @@ Validator::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  get "/",  to: "validator#validate_get", constraints: lambda{ |req| !req.params[:url].blank? }
-  post "/", to: "validator#validate_post" 
+  get "/",  to: "validator#validate", constraints: lambda{ |req| !req.params[:url].blank? }
+  post "/", to: "validator#validate" 
   root "validator#index"
 
   # Example of regular route:

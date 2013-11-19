@@ -44,7 +44,7 @@ class DataValidator
                      )
     @namespace = args[:namespace]
     @tests = Dir[args[:test_dir] + "/*"]
-    @strict = args.has_key?(:strict) ? args[:strict] : false
+    @strict = args[:strict] || false
   end  
     
   # Replaces SPARQL query variable `?graphName` with the provided `graph_name` URI
@@ -88,7 +88,7 @@ class DataValidator
     # Ugly conversion to string and back to JSON,
     # however, other approaches don't respect @context.
     error_hash = JSON.parse graph.dump(:jsonld, context: JSONLD_CONTEXT.dup)
-    error_list = error_hash.has_key?("@graph") ? error_hash["@graph"] : [error_hash]
+    error_list = error_hash["@graph"] || [error_hash]
     error_list.map do |item|
       item.delete_if { |key, value| IGNORED_ATTRS.include? key}
       item["@context"] = "#{@base_uri}context.jsonld"

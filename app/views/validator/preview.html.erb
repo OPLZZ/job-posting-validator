@@ -23,28 +23,8 @@
                  data-original-title="<%= error["comment"] %>"></span>
             <% end %>
           </td>
-          <td>
-            <% if error["violationPath"].is_a? Enumerable %>
-              <%= error["violationPath"].join(", ") %>
-            <% else %>
-              <%= error["violationPath"] %>
-            <% end %>
-          </td>
-          <td>
-            <% if error["invalidValue"].is_a?(Hash) %>
-              <% if error["invalidValue"].key?("@id") %>
-                <% if error["invalidValue"]["@id"].start_with? "_:" %>
-                  <%# Omit display? %>
-                <% else %>
-                  <a href="<%= error["invalidValue"]["@id"] %>"><%= error["invalidValue"]["@id"] %></a>
-                <% end %>
-              <% elsif error["invalidValue"].key?("@language") %>
-                <%= error["invalidValue"]["@value"] %>
-              <% end %> 
-            <% else %>
-              <%= error["invalidValue"] %>
-            <% end %>
-          </td>
+          <td><%= error["violationPath"] %></td>
+          <td><%= error["invalidValue"] %></td>
         </tr>
       <% end %>
     </tbody>
