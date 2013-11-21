@@ -10,15 +10,17 @@ describe ValidatorController do
 
   describe "POST #validate" do
     context "with invalid input" do
-      it "renders the :index view with error message for empty input" do
+      it "renders the :index view for empty input and flashes an error message" do
         post :validate
+        flash[:error].should_not be_nil
         response.should render_template :index 
       end
     end
     
     context "with valid input" do
       it "renders the :preview view for valid input" do
-        pending
+        post :validate, text: load_fixture("minimal_valid_webpage.html")
+        response.should render_template :preview 
       end
     end
   end
