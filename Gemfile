@@ -44,7 +44,10 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem "rspec-rails", "~> 2.0", group: [:development, :test]
+group :development, :test do
+  gem "rspec-rails", "~> 2.0"
+  gem "faker", "~> 1.2.0"
+end
 
 gem "logger", "~> 1.2.8"
 gem "rest-client", "~> 1.6.7"

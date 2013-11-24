@@ -34,6 +34,12 @@ class DataValidator
     required_keys.map do |required_key|
       raise ArgumentError, "Missing keyword argument #{required_key}" unless args.key? required_key
     end
+    [:base_uri, :namespace, :sparql_endpoint, :sparql_update_endpoint].each do |key|
+      raise ArgumentError, "Invalid URI provided for #{key} argument" unless args[key] =~ URI::regexp
+    end
+    unless File.directory? args[:test_dir]
+      raise ArgumentError, "Invalid path to test directory: #{args[:test_dir]}"
+    end
 
     @base_uri = args[:base_uri].end_with?("/") ? args[:base_uri] : args[:base_uri] + "/"
     @sparql = SPARQL::Client.new args[:sparql_endpoint]
@@ -43,7 +49,7 @@ class DataValidator
                        protocol: "1.1"
                      )
     @namespace = args[:namespace]
-    @tests = Dir[args[:test_dir] + "/*"]
+    @tests = Dir[args[:test_dir] + "/*"] 
     @strict = args[:strict] || false
   end  
     

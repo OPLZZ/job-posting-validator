@@ -5,6 +5,7 @@ describe Webpage do
     it "is invalid if provided with empty input" do
       webpage = Webpage.new
       webpage.should_not be_valid
+      webpage.errors.messages[:input].should_not be_nil
     end
   end
 

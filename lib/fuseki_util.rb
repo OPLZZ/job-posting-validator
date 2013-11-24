@@ -2,6 +2,10 @@ module FusekiUtil
   # Collection of utility functions for working
   # with Fuseki server
 
+  # Get absolute path to `file` from the directory with bootstrapping data
+  #
+  # @returns [String] Absolute path to `file`
+  #
   def data_path(file)
     "#{Rails.root}/data/validator/bootstrap/#{file}"
   end
@@ -54,6 +58,12 @@ module FusekiUtil
     end
   end
 
+  # If it's requested to change path the method prefixes Fuseki commands with
+  # cd command.
+  #
+  # @param args [Hash]
+  # @returns [String]
+  #
   def get_fuseki_command_prefix(args)
     args.key?(:path) ? "cd #{args[:path]}; #{args[:path]}/" : ""
   end
