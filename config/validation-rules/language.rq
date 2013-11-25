@@ -18,11 +18,10 @@ WHERE {
     ?s ?p ?o .
     FILTER (isLiteral(?o) && !(lang(?o) = ""))
   }
-  # Use only the first subtag (first 2 letters); e.g., "en" instead of "en-US".
-  BIND (substr(lang(?o), 0, 3) AS ?lang)
   FILTER NOT EXISTS {
     GRAPH <http://id.loc.gov/vocabulary/iso639-1> {
       [] skos:notation ?lang .
+      FILTER (langMatches(lang(?o), ?lang))
     }
   }
 }
