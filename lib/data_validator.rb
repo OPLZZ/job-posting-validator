@@ -10,6 +10,9 @@ class DataValidator
       File.join(Rails.root, "public", "error_context.jsonld")
     ))["@context"] 
 
+  # Allow public access to validator's SPARQL Query endpoint to enable testing
+  attr_reader :sparql, :tests
+
   # Create a validator client connected to Fuseki Server
   # 
   # @option arguments [String] :base_uri                Application root URL
