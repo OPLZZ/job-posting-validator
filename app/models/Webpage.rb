@@ -74,8 +74,6 @@ class Webpage
     @job_postings ||= convert_to_json data 
   end
 
-  private
-
   # Local alias 
   def validator
     ValidatorApp.instance 
@@ -184,10 +182,6 @@ class Webpage
   # @params value [String]
   # @returns [Boolean]
   #
-  # For example:
-  #   is_blank? "_:b1234" # => true
-  #   is_blank? "_:abc"   # => true
-  #   is_blank? "abc"     # => false
   def is_blank?(value)
     value.start_with? "_:"
   end

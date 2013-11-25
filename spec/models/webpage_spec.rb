@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "spec_helper"
 
 describe Webpage do
   context "webpage with invalid content" do
@@ -10,9 +10,66 @@ describe Webpage do
   end
 
   context "webpage with valid content" do
+    let (:webpage) { Webpage.new(text: load_fixture("minimal_valid_webpage.html")) }
+    
     it "is valid provided with valid HTML including a JobPosting" do
-      webpage = Webpage.new(text: load_fixture("minimal_valid_webpage.html"))
       webpage.should be_valid
+    end
+
+    describe "#choose_locale" do
+      it "chooses correct locale for multi-lingual values"
+    end
+  
+    describe "#filter_locale" do
+    end
+
+    describe "#convert_to_json" do
+    end
+
+    describe "#embed" do
+    end
+
+    describe "#embed_array" do
+    end
+
+    describe "#embed_hash" do
+    end
+
+    describe "#filter_job_posting" do
+    end
+
+    describe "#is_blank?" do
+      let (:examples) {
+        {
+          "_:b1234" => true,
+          "_:abc"   => true,
+          "abc"     => false
+        }
+      }
+      it "correctly detects blank nodes" do
+        examples.each { |value, result| webpage.is_blank?(value).should == result } 
+      end 
+    end
+
+    describe "#key_present?" do
+    end
+
+    describe "#nest" do
+    end
+
+    describe "#preprocess_errors" do
+    end
+
+    describe "#preprocess_error_value" do
+    end
+
+    describe "#replace_blank_nodes" do
+    end
+
+    describe "#select_job_postings" do
+    end
+
+    describe "#select_object_by_id" do
     end
   end
 end
