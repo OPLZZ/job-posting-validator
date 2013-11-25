@@ -10,14 +10,20 @@ module FusekiUtil
     "#{Rails.root}/data/validator/bootstrap/#{file}"
   end
 
-  def delete_old_graphs(update_endpoint_url, old_graphs)
+  # @param update_endpoint_url [String]   URI of SPARQL Update endpoint
+  # @param graphs [Array<String>]         Array of graph URIs to delete
+  #
+  def delete_graphs(update_endpoint_url, graphs)
     sparql_update = SPARQL::Client.new(update_endpoint_url, :protocol => "1.1")
-    old_graphs.each do |old_graph|
-      sparql_update.clear(:graph, old_graph)
+    graphs.each do |graph|
+      sparql_update.clear(:graph, graph)
     end
   end
   
   # Test if path is executable fuseki-server script
+  #
+  # @returns [Boolean]
+  #
   def fuseki_available?(**args)
     prefix = get_fuseki_command_prefix args
     command = "#{prefix}fuseki-server --version > /dev/null 2>&1"
@@ -25,6 +31,9 @@ module FusekiUtil
   end
 
   # Source: http://t-a-w.blogspot.com/2010/04/how-to-kill-all-your-children.html
+  #
+  # @param parent_pid [Fixnum] Parent process' ID
+  #
   def get_child_pids(parent_pid)
     descendants = Hash.new{ |ht,k| ht[k] = [k] }
     Hash[*`ps -eo pid,ppid`.scan(/\d+/).map{ |x| x.to_i }].each{ |pid, ppid|
@@ -33,9 +42,15 @@ module FusekiUtil
     descendants[parent_pid].flatten - [parent_pid]
   end
 
-  def get_old_graphs(query_endpoint, namespace)
+  # Deletes graphs older than `time` from `namespace` using SPARQL Update `query_endpoint`
+  #
+  # @param time [Fixnum]            Lower limit of graph age in seconds 
+  # @param query_endpoint [String]  URI of SPARQL Update endpoint
+  # @param namespace [String]       URI of namespace of the sought graphs
+  #
+  def get_old_graphs(time, query_endpoint, namespace)
     sparql_query = SPARQL::Client.new query_endpoint
-    limit = 20.minutes.ago.xmlschema
+    limit = time.ago.xmlschema
     query = %Q{
       PREFIX dcterms: <http://purl.org/dc/terms/>
       PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#>
@@ -68,7 +83,11 @@ module FusekiUtil
     args.key?(:path) ? "cd #{args[:path]}; #{args[:path]}/" : ""
   end
 
-  # Return the number of triples in the Fuseki store
+  # Return the number of triples in SPARQL endpoint
+  #
+  # @param sparql_endpoint [String] URI of SPARQL Query endpoint
+  # @returns [Fixnum]               Number of triples in the SPARQL endpoint
+  #
   def get_store_size(sparql_endpoint)
     sparql = SPARQL::Client.new sparql_endpoint
     query = %Q{
@@ -83,14 +102,23 @@ module FusekiUtil
     response.first[:count].to_i
   end
 
+  # Path to file where Fuseki Server's process ID is stored
   def pid_path
     "#{Rails.root}/tmp/pids/fuseki.pid"
   end
-  
+ 
+  # Read Fuseki Server's process ID
+  #
+  # @returns [Fixnum] Fuseki Server's process ID
+  #
   def read_pid
     File.read(pid_path).to_i
   end
 
+  # Test whether Fuseki Server is running
+  #
+  # @returns [Boolean]
+  #
   def server_running?
     if File.exist? pid_path
       pid = read_pid
@@ -105,6 +133,9 @@ module FusekiUtil
   end
 
   # Spawn Fuseki Server and return its process ID
+  #
+  # @returns [Fixnum] Fuseki Server's process ID
+  #
   def spawn_server(options = {}, **args)
     prefix = get_fuseki_command_prefix args
     command = "#{prefix}fuseki-server --memTDB --update --port #{options["port"]} "\
@@ -113,10 +144,15 @@ module FusekiUtil
     spawn command
   end
 
+  # Path to local copy of Fuseki Server
   def vendor_fuseki_path
     Dir[File.join(Rails.root, "vendor", "jena-fuseki-*")].first
   end
 
+  # Save Fuseki Server's process ID to a file
+  #
+  # @param pid [Fixnum] Fuseki Server's process ID
+  #
   def write_pid(pid)
     File.open(pid_path, "w") { |f| f.write(pid) }
   end
