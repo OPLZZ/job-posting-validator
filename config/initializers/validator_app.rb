@@ -13,13 +13,13 @@ module ValidatorApp
   def self.jsonld_context
     @jsonld_context ||= {
       file: ValidatorApp.load_jsonld_context, 
-      uri:  ValidatorApp.config["validator"]["jsonld_context_uri"] 
+      uri:  ValidatorApp.config["jsonld_context_uri"] 
     }
   end
 
   # Instance of SPARQL validator used in controllers
   def self.instance
-    config = ValidatorApp.config["validator"]
+    config = ValidatorApp.config
     base_url = "http://127.0.0.1:#{config["port"]}/#{config["dataset"]}/"
     @instance ||= ::DataValidator.new(
       base_uri:               config["base_uri"],

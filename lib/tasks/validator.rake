@@ -6,7 +6,7 @@ include FusekiUtil
 namespace :validator do
   desc "Load configuration of the application"
   task :load_config do
-    @config = YAML.load_file(File.join(Rails.root, "config", "config.yml"))[Rails.env]["validator"]
+    @config = YAML.load_file(File.join(Rails.root, "config", "config.yml"))[Rails.env]
   end
 
   namespace :data do
@@ -170,8 +170,8 @@ namespace :validator do
 
       store_size = get_store_size query_endpoint
       if store_size > 100000
-        old_graphs = get_old_graphs(query_endpoint, namespace)
-        delete_old_graphs(update_endpoint, old_graphs)
+        old_graphs = get_old_graphs(20.minutes, query_endpoint, namespace)
+        delete_graphs(update_endpoint, old_graphs)
         puts "Deleted #{old_graphs.size} old graphs."
       end
     end

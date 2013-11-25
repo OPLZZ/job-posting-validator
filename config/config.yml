@@ -1,26 +1,25 @@
 defaults: &defaults
-  validator: 
-    dataset: validator
-    files_to_load: 
-      "http://vocab.damepraci.eu":
-        local: complete.ttl
-        remote:
-        - "http://topbraid.org/schema/schema.ttl"
-        - "https://raw.github.com/OPLZZ/data-modelling/master/cs.ttl"
-        - "https://raw.github.com/OPLZZ/data-modelling/master/schemaExt.ttl"
-        - "https://raw.github.com/OPLZZ/data-modelling/master/validator.ttl"
-      "http://id.loc.gov/vocabulary/iso639-1":
-        local: langs.ttl
-        remote:
-        - "http://id.loc.gov/static/data/vocabularyiso639-1.ttl.zip" 
-      "http://data.damepraci.cz/resource/currency-codes":
-        local: currencyCodes.ttl
-        remote:
-        - "https://raw.github.com/OPLZZ/data-modelling/master/codelists/currencyCodes.ttl" 
-    base_uri: http://localhost:3000/
-    jsonld_context_uri: "https://rawgithub.com/OPLZZ/data-modelling/master/jsonld_contexts/mpsv.jsonld"
-    namespace: "http://data.damepraci.eu/validator/"
-    port: 3030
+  dataset: validator
+  files_to_load: 
+    "http://vocab.damepraci.eu":
+      local: complete.ttl
+      remote:
+      - "http://topbraid.org/schema/schema.ttl"
+      - "https://raw.github.com/OPLZZ/data-modelling/master/cs.ttl"
+      - "https://raw.github.com/OPLZZ/data-modelling/master/schemaExt.ttl"
+      - "https://raw.github.com/OPLZZ/data-modelling/master/validator.ttl"
+    "http://id.loc.gov/vocabulary/iso639-1":
+      local: langs.ttl
+      remote:
+      - "http://id.loc.gov/static/data/vocabularyiso639-1.ttl.zip" 
+    "http://data.damepraci.cz/resource/currency-codes":
+      local: currencyCodes.ttl
+      remote:
+      - "https://raw.github.com/OPLZZ/data-modelling/master/codelists/currencyCodes.ttl" 
+  base_uri: http://localhost:3000/
+  jsonld_context_uri: "https://rawgithub.com/OPLZZ/data-modelling/master/jsonld_contexts/mpsv.jsonld"
+  namespace: "http://data.damepraci.eu/validator/"
+  port: 3030
 
 development:
   <<: *defaults
