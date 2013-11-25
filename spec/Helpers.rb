@@ -1,4 +1,32 @@
+require "fuseki_util"
+
 module Helpers
+  include FusekiUtil
+
+  # Get the number of instances of schema:JobPosting in `graph`
+  # 
+  # @param graph [RDF::Graph]
+  # @returns [Fixnum]
+  #
+  def count_job_postings(graph)
+    query = SPARQL.parse %Q(
+      PREFIX schema: <http://schema.org/>
+
+      SELECT (COUNT(?jobPosting) AS ?count)
+      WHERE {
+        ?jobPosting a schema:JobPosting .
+      }
+    )
+    graph.query(query).first[:count].to_i 
+  end
+
+  # Array of fixtures files
+  def fixtures
+    @fixtures ||= Dir[File.join(Rails.root, "spec", "fixtures", "/*")].map do |fixture|
+      File.basename(fixture, ".*")
+    end
+  end
+
   # Loads fixture from `file_name` in /spec/fixtures directory
   #
   # @param file_name [String]
