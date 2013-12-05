@@ -25,17 +25,25 @@ class Webpage
   end
   
   validate do
-    if !content || content.empty?
-      errors[:input] << I18n.translate("errors.input")
-    else
-      begin
-        validation_results = validator.validate data
-        unless validation_results.empty?
-          errors[:validation] << preprocess_errors(filter_locale(validation_results))
-        end 
-      rescue SPARQL::Client::MalformedQuery
-        errors[:sparql] << I18n.translate("errors.syntax") 
+    begin
+      if !content || content.empty?
+        errors[:input] << I18n.translate("errors.input")
+      else
+        begin
+          validation_results = validator.validate data
+          unless validation_results.empty?
+            errors[:validation] << preprocess_errors(filter_locale(validation_results))
+          end 
+        rescue SPARQL::Client::MalformedQuery
+          errors[:sparql] << I18n.translate("errors.syntax") 
+        end
       end
+    rescue URI::InvalidURIError => error
+      errors[:input] << if error.message.empty?
+                          I18n.translate("errors.empty_url")
+                        else
+                          I18n.translate("errors.invalid_url") + error.message
+                        end
     end
   end
 
@@ -50,7 +58,7 @@ class Webpage
                  when @text
                    @text
                  when @url
-                   raise "Provided URL #{@url} isn't well-formed." unless @url =~ URI::regexp
+                   raise URI::InvalidURIError, @url unless @url =~ URI::regexp
                    response = open(@url)
                    response.read
                  end

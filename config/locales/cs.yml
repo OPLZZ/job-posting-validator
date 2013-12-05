@@ -1,6 +1,8 @@
 cs:
   errors:
+    empty_url: "Prázdné URL"
     input: "Chybný vstup"
+    invalid_url: "Neplatné URL:"
     syntax: "Syntaktická chyba ve vstupních datech"
   home:
     enter_url: "Vložte URL k validaci"
@@ -11,6 +13,7 @@ cs:
     validate_file: "Validovat soubor"
     validate_text: "Validovat text"
     validate_url: "Validovat URL"
+  language: "Jazyk"
   preview:
     description: "Tohle jsme z vašich dat dostali..."
     error: "Chyba"

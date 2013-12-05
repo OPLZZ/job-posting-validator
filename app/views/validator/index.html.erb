@@ -14,7 +14,7 @@
 
 <div class="tab-content">
   <div class="tab-pane control-group active" id="tab-url">
-    <form class="form-inline" method="GET">
+    <form action="validate" class="form-inline" method="GET">
       <fieldset class="controls">
         <input id="url" name="url" placeholder="<%= t "home.enter_url" %>"
                autofocus="true" type="url" class="input-xxlarge">
@@ -24,7 +24,7 @@
   </div>
 
   <div class="tab-pane" id="tab-file">
-    <form method="POST" enctype="multipart/form-data">
+    <form action="validate" method="POST" enctype="multipart/form-data">
       <fieldset class="controls">
         <input id="file" name="file" class="input-file" type="file">
         <button id="submit" name="submit" type="submit" class="btn-large btn-primary"><%= t "home.validate" %></button>
@@ -33,7 +33,7 @@
   </div>
   
   <div class="tab-pane" id="tab-text">
-    <form method="POST" enctype="multipart/form-data">
+    <form action="validate" method="POST" enctype="multipart/form-data">
       <fieldset class="controls">
         <p>
           <textarea autofocus="true" id="text" name="text" placeholder="<%= t "home.paste_markup" %>"

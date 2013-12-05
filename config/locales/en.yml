@@ -1,6 +1,8 @@
 en:
   errors:
+    empty_url: "Empty URL"
     input: "Invalid input"
+    invalid_url: "Invalid URL:"
     syntax: "Syntax error in the input data"
   home:
     enter_url: "Enter URL to validate"
