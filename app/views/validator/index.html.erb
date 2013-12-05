@@ -1,12 +1,14 @@
+<p><%= t "home.explanation" %></p>
+
 <ul class="nav nav-tabs" id="formtabs">
   <li class="active">
-    <a href="#tab-url" data-toggle="tab"><label for="url">Validate URL</label></a>
+    <a href="#tab-url" data-toggle="tab"><label for="url"><%= t "home.validate_url" %></label></a>
   </li>
   <li>
-    <a href="#tab-file" data-toggle="tab"><label for="file">Validate local file</label></a>
+    <a href="#tab-file" data-toggle="tab"><label for="file"><%= t "home.validate_file" %></label></a>
   </li>
   <li>
-    <a href="#tab-text" data-toggle="tab"><label for="text">Validate direct text input</label></a>
+    <a href="#tab-text" data-toggle="tab"><label for="text"><%= t "home.validate_text" %></label></a>
   </li>
 </ul>
 
@@ -14,9 +16,9 @@
   <div class="tab-pane control-group active" id="tab-url">
     <form class="form-inline" method="GET">
       <fieldset class="controls">
-        <input id="url" name="url" placeholder="Enter URL to validate"
+        <input id="url" name="url" placeholder="<%= t "home.enter_url" %>"
                autofocus="true" type="url" class="input-xxlarge">
-        <button id="submit" name="submit" type="submit" class="btn-large btn-primary">Validate</button>
+               <button id="submit" name="submit" type="submit" class="btn-large btn-primary"><%= t "home.validate" %></button>
       </fieldset>
     </form>
   </div>
@@ -25,7 +27,7 @@
     <form method="POST" enctype="multipart/form-data">
       <fieldset class="controls">
         <input id="file" name="file" class="input-file" type="file">
-        <button id="submit" name="submit" type="submit" class="btn-large btn-primary">Validate</button>
+        <button id="submit" name="submit" type="submit" class="btn-large btn-primary"><%= t "home.validate" %></button>
       </fieldset>
     </form>
   </div>
@@ -34,10 +36,10 @@
     <form method="POST" enctype="multipart/form-data">
       <fieldset class="controls">
         <p>
-          <textarea autofocus="true" id="text" name="text" placeholder="paste your markup here"
+          <textarea autofocus="true" id="text" name="text" placeholder="<%= t "home.paste_markup" %>"
                     class="span9" rows="15"></textarea>
         </p>
-        <p><button id="submit" name="submit" type="submit" class="btn-large btn-primary">Validate</button></p>
+        <p><button id="submit" name="submit" type="submit" class="btn-large btn-primary"><%= t "home.validate" %></button></p>
       </fieldset>
     </form>
   </div>

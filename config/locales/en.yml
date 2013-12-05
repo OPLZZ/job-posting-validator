@@ -3,7 +3,14 @@ en:
     input: "Invalid input"
     syntax: "Syntax error in the input data"
   home:
+    enter_url: "Enter URL to validate"
+    explanation: "Preview and validate web pages annotated with Schema.org's JobPosting in RDFa."
     made_by: "Made by"
+    paste_markup: "paste your markup here"
+    validate: "Validate"
+    validate_file: "Validate local file"
+    validate_text: "Validate direct text input"
+    validate_url: "Validate URL"
   preview:
     description: "This is what we extracted out of your data:"
     error: "Error"

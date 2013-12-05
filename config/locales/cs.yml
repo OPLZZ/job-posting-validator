@@ -3,7 +3,14 @@ cs:
     input: "Chybný vstup"
     syntax: "Syntaktická chyba ve vstupních datech"
   home:
+    enter_url: "Vložte URL k validaci"
+    explanation: "Náhled a validace webových stránek anotovaných v RDFa pomocí JobPosting ze Schema.org"
     made_by: "Vytvořeno"
+    paste_markup: "zde vložte HTML"
+    validate: "Validovat"
+    validate_file: "Validovat soubor"
+    validate_text: "Validovat text"
+    validate_url: "Validovat URL"
   preview:
     description: "Tohle jsme z vašich dat dostali..."
     error: "Chyba"
