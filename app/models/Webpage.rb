@@ -25,25 +25,36 @@ class Webpage
   end
   
   validate do
-    begin
-      if !content || content.empty?
-        errors[:input] << I18n.translate("errors.input")
-      else
-        begin
-          validation_results = validator.validate data
-          unless validation_results.empty?
-            errors[:validation] << preprocess_errors(filter_locale(validation_results))
-          end 
-        rescue SPARQL::Client::MalformedQuery
-          errors[:sparql] << I18n.translate("errors.syntax") 
-        end
+    case 
+    when @url
+      unless @url =~ URI::regexp
+        errors[:input] << if error.message.empty?
+                            I18n.translate("errors.empty_url")
+                          else
+                            I18n.translate("errors.invalid_url") + " " + @url
+                          end
       end
-    rescue URI::InvalidURIError => error
-      errors[:input] << if error.message.empty?
-                          I18n.translate("errors.empty_url")
-                        else
-                          I18n.translate("errors.invalid_url") + error.message
-                        end
+    when @file
+      max_upload_size = ValidatorApp.config.max_upload_size || 8
+      if @file.size > max_upload_size.megabytes
+        file_size = @file.size.fdiv(1.megabyte).round(2)
+        errors[:input] << "File size #{file_size} MB exceeds maximum upload size #{max_upload_size} MB."
+      end
+    end
+
+    if !@content
+      errors[:input] << I18n.translate("errors.empty_input")
+    else
+      begin
+        validation_results = validator.validate @data
+        unless validation_results.empty?
+          errors[:validation] << preprocess_errors(filter_locale(validation_results))
+        end 
+      rescue RDF::ReaderError => error
+        errors[:syntax] << error.message
+      rescue SPARQL::Client::MalformedQuery
+        errors[:sparql] << I18n.translate("errors.syntax") 
+      end
     end
   end
 
@@ -58,7 +69,6 @@ class Webpage
                  when @text
                    @text
                  when @url
-                   raise URI::InvalidURIError, @url unless @url =~ URI::regexp
                    response = open(@url)
                    response.read
                  end
@@ -70,8 +80,6 @@ class Webpage
   #
   def data
     @data ||= validator.parse content
-  rescue RDF::ReaderError => error
-    errors.add(:syntax, error.message)
   end
 
   # Pre-process RDF graph for rendering its preview
@@ -87,6 +95,7 @@ class Webpage
     ValidatorApp.instance 
   end
 
+  # Localise value
   #
   # @param value [*]
   # @returns [*]

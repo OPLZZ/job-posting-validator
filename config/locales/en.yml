@@ -1,5 +1,6 @@
 en:
   errors:
+    empty_input: "Empty input"
     empty_url: "Empty URL"
     input: "Invalid input"
     invalid_url: "Invalid URL:"

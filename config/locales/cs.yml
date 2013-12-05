@@ -1,5 +1,6 @@
 cs:
   errors:
+    empty_input: "Prázdný vstup"
     empty_url: "Prázdné URL"
     input: "Chybný vstup"
     invalid_url: "Neplatné URL:"

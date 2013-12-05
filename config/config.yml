@@ -18,6 +18,7 @@ defaults: &defaults
       - "https://raw.github.com/OPLZZ/data-modelling/master/codelists/currencyCodes.ttl" 
   base_uri: http://localhost:3000/
   jsonld_context_uri: "https://rawgithub.com/OPLZZ/data-modelling/master/jsonld_contexts/mpsv.jsonld"
+  max_upload_size_mb: 8 
   namespace: "http://data.damepraci.eu/validator/"
   port: 3030
 
