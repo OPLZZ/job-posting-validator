@@ -4,7 +4,7 @@ require "open-uri"
 include FusekiUtil
 
 namespace :validator do
-  desc "Load configuration of the application"
+  # Load configuration of the application
   task :load_config do
     @config = YAML.load_file(File.join(Rails.root, "config", "config.yml"))[Rails.env]
   end
@@ -13,7 +13,7 @@ namespace :validator do
     desc "Import background data used for validation"
     task :import_background_data => [:currency_codes, :iso639_1, :schema_org] 
     
-    desc "Import currency codes"
+    # Import currency codes
     task :currency_codes => "rake:validator:load_config" do
       paths = @config["files_to_load"]["http://data.damepraci.cz/resource/currency-codes"]
       currencyCodes = RestClient.get paths["remote"].first
@@ -21,7 +21,7 @@ namespace :validator do
       puts "Currency codes imported"
     end
 
-    desc "Import ISO 639-1 language codes"
+    # Import ISO 639-1 language codes
     task :iso639_1 => "rake:validator:load_config" do
       paths = @config["files_to_load"]["http://id.loc.gov/vocabulary/iso639-1"]
       turtle = unzip(RestClient.get paths["remote"].first)
@@ -48,7 +48,7 @@ namespace :validator do
       puts "Language codes imported"
     end
     
-    desc "Import Schema.org + extensions for job market"
+    # Import Schema.org + extensions for job market
     task :schema_org => "rake:validator:load_config" do
       puts "Importing Schema.org + extensions for job market... it may take a while."
       paths = @config["files_to_load"]["http://vocab.damepraci.eu"]
@@ -88,12 +88,12 @@ namespace :validator do
   end
 
   namespace :fuseki do
-    desc "Check if the Fuseki server is running"
+    # Check if the Fuseki server is running
     task :check_running do
       raise "Fuseki server isn't running" unless server_running? 
     end
 
-    desc "Update Jetty configuration"
+    # Update Jetty configuration
     task :configure_jetty => "rake:validator:load_config" do
       port = @config["port"]
       
@@ -104,8 +104,7 @@ namespace :validator do
       File.open(config_path, "w") { |file| file.write(config.to_xml) } 
     end
 
-    desc "Download the Fuseki Server. Specify the desired Fuseki version number"\
-         "as $FUSEKI_VERSION environment variable (default is 1.0.0)."
+    # Download the Fuseki Server
     task :download do
       puts "Downloading Fuseki Server"
       version_number = ENV["FUSEKI_VERSION"] || "1.0.0" 
@@ -131,14 +130,15 @@ namespace :validator do
     desc "Initialize Fuseki (start server + load data)"
     task :init => [:start, :load]
 
-    desc "Download and install Fuseki server" 
+    desc "Download and install Fuseki server. Specify the desired Fuseki version number "\
+         "as $FUSEKI_VERSION environment variable (default is 1.0.0)."
     task :install => [:download, :unzip] do
       # Make fuseki-server executable
       File.chmod(766, File.join(vendor_fuseki_path, "fuseki-server")) 
       puts "Fuseki Server installed"
     end
 
-    desc "Load background data into the Fuseki RDF store"
+    # Load background data into the Fuseki RDF store
     task :load => ["rake:validator:load_config", :check_running] do
       puts "Loading background data..."
       data_endpoint = "http://127.0.0.1:#{@config["port"]}/#{@config["dataset"]}/data"
@@ -217,7 +217,7 @@ namespace :validator do
       end 
     end
 
-    desc "Unzip the downloaded Fuseki Server distribution"
+    # Unzip the downloaded Fuseki Server distribution
     task :unzip => :download do
       Zip::Archive.open(@response.path) do |archive|
         archive.each do |entry|
