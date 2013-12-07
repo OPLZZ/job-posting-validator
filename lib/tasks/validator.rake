@@ -1,3 +1,4 @@
+require "data_validator"
 require "fileutils"
 require "fuseki_util"
 require "open-uri"
@@ -215,6 +216,36 @@ namespace :validator do
         puts "Failed"
         puts e.inspect
       end 
+    end
+
+    desc "Test SPARQL rule (provided as task argument) with corresponding fixture"
+    task :test_rule, [:rule_name] => ["rake:validator:load_config", :check_running] do |_, args|
+      raise "Provide file name of the SPARQL test to run by using "\
+            "rake validator:fuseki:test_rule[rule file name]" unless args[:rule_name]
+      rule_path = File.join(Rails.root, "config", "validation-rules", args[:rule_name])
+      raise "File #{rule_path} doesn't exist." unless File.exist? rule_path
+      rule_test = RDF::Graph.load(
+        File.join(Rails.root, "spec", "fixtures", File.basename(args[:rule_name], ".rq") + ".ttl"),
+        format: :ttl
+      )
+
+      base_url = "http://127.0.0.1:#{@config["port"]}/#{@config["dataset"]}/"
+      endpoint_url = base_url + "sparql"
+      validator = DataValidator.new(
+        base_uri:               @config["base_uri"],
+        namespace:              @config["namespace"],
+        sparql_endpoint:        endpoint_url,
+        sparql_update_endpoint: "#{base_url}update",
+        test_dir:               File.join(Rails.root, "config", "validation-rules")
+      )
+
+      puts "Running test #{args[:rule_name]} on SPARQL endpoint #{endpoint_url}."
+      
+      graph_name = validator.load_data rule_test
+      results = validator.run_test(rule_path, graph_name)
+      validator.clear_graph graph_name
+
+      puts JSON.pretty_generate results
     end
 
     # Unzip the downloaded Fuseki Server distribution
