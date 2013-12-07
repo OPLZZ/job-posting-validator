@@ -26,7 +26,7 @@ module ValidatorApp
       namespace:              config["namespace"],
       sparql_endpoint:        "#{base_url}sparql",
       sparql_update_endpoint: "#{base_url}update", 
-      test_dir:               "#{Rails.root}/config/validation-rules"
+      test_dir:               File.join(Rails.root, "config", "validation-rules")
     )
   end
 

@@ -27,34 +27,34 @@ class Webpage
   validate do
     case 
     when @url
-      unless @url =~ URI::regexp
-        errors[:input] << if error.message.empty?
-                            I18n.translate("errors.empty_url")
-                          else
-                            I18n.translate("errors.invalid_url") + " " + @url
-                          end
+      if @url.empty?
+        errors[:input] << I18n.translate("errors.empty_url")
       end
     when @file
-      max_upload_size = ValidatorApp.config.max_upload_size || 8
-      if @file.size > max_upload_size.megabytes
+      max_upload_size = ValidatorApp.config["max_upload_size_mb"] || 8
+      if file.size > max_upload_size.megabytes
         file_size = @file.size.fdiv(1.megabyte).round(2)
         errors[:input] << "File size #{file_size} MB exceeds maximum upload size #{max_upload_size} MB."
       end
     end
 
-    if !@content
-      errors[:input] << I18n.translate("errors.empty_input")
-    else
-      begin
-        validation_results = validator.validate @data
-        unless validation_results.empty?
-          errors[:validation] << preprocess_errors(filter_locale(validation_results))
-        end 
-      rescue RDF::ReaderError => error
-        errors[:syntax] << error.message
-      rescue SPARQL::Client::MalformedQuery
-        errors[:sparql] << I18n.translate("errors.syntax") 
+    begin
+      if !content
+        errors[:input] << I18n.translate("errors.empty_input")
+      else
+        begin
+          validation_results = validator.validate data
+          unless validation_results.empty?
+            errors[:validation] << preprocess_errors(filter_locale(validation_results))
+          end 
+        rescue RDF::ReaderError => error
+          errors[:syntax] << error.message
+        rescue SPARQL::Client::MalformedQuery
+          errors[:sparql] << I18n.translate("errors.syntax") 
+        end
       end
+    rescue URI::InvalidURIError => error
+      I18n.translate("errors.invalid_url") + " " + error.message
     end
   end
 
@@ -69,6 +69,7 @@ class Webpage
                  when @text
                    @text
                  when @url
+                   raise URI::InvalidURIError, @url unless @url =~ URI::regexp
                    response = open(@url)
                    response.read
                  end
