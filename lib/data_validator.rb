@@ -102,7 +102,7 @@ class DataValidator
       item.delete_if { |key, value| IGNORED_ATTRS.include? key}
       item["@context"] = "#{@base_uri}context.jsonld"
       item 
-    end 
+    end
   end
 
   # Loads `data` into a named graph, returns URI of the newly created graph with containing the data

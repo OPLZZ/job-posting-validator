@@ -3,9 +3,9 @@ class ValidatorController < ApplicationController
   #
   # For example:
   #   http://localhost:3000/validate?url=https://dl.dropboxusercontent.com/u/893551/pracovni/OPLZZ_2013/validator-web/data/validator/examples/Filip_Podstavec_3.html
-  #   curl --data-urlencode "text@data/validator/examples/Triplethink_4.html" http://localhost:3000/validate
+  #   curl -H "Accept:application/json" --data-urlencode "text@data/validator/examples/Triplethink_4.html" http://localhost:3000/validate
   def validate
-    webpage = Webpage.new(params)
+    webpage = Webpage.new params
     # Note: webpage.valid? needs to be called, validation is lazy!
     valid = webpage.valid?
     errors = webpage.errors.messages 
@@ -19,11 +19,11 @@ class ValidatorController < ApplicationController
         else
           @errors = valid ? [] : errors[:validation].first
           @job_postings = webpage.job_postings 
-          render "preview"
+          render "validate"
         end
       end
-      format.json do
-        render json: errors
+      format.any(:json, :jsonld) do
+        render json: errors, callback: params["callback"]
       end
     end
   end
