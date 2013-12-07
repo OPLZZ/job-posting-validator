@@ -1,0 +1,43 @@
+PREFIX rdfs:   <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX spin:   <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:invalidValue ?usedTBox ;
+    rdfs:label ?violationLabelEN, ?violationLabelEN 
+    .
+}
+WHERE {
+  {
+    SELECT DISTINCT ?usedTBox
+    WHERE {
+      GRAPH ?validatedGraph {
+        {
+          [] a ?usedTBox .
+        } UNION {
+          [] ?usedTBox [] .
+        }
+      }
+      FILTER NOT EXISTS {
+        GRAPH <http://vocab.damepraci.eu> {
+          ?usedTBox ?p [] .
+        }
+      }
+    }
+  }
+  {
+    SELECT DISTINCT ?tbox
+    WHERE {
+      GRAPH <http://vocab.damepraci.eu> {
+        ?tbox ?p [] . 
+      }
+    }
+  }
+  FILTER (LCASE(STR(?usedTBox)) = LCASE(STR(?tbox)))
+  BIND (STRLANG(CONCAT(
+      "Wrong character case in <", STR(?usedTBox), ">. The correct case is <", STR(?tbox), ">."
+    ), "en") AS ?violationLabelEN)
+  BIND (STRLANG(CONCAT(
+      "Chybná velikost znaků ve <", STR(?usedTBox), ">. Správný zápis je <", STR(?tbox), ">."
+    ), "cs") AS ?violationLabelCS)
+}
