@@ -1,4 +1,5 @@
 require "active_model"
+require "digest/sha1"
 require "open-uri"
 
 class Webpage
@@ -82,6 +83,14 @@ class Webpage
   #
   def data
     @data ||= validator.parse content
+  end
+
+  # SHA1-hashed hexadecimal digest of webpage's content
+  # 
+  # @returns [String]
+  #
+  def hashed_content
+    @hashed_content ||= Digest::SHA1.hexdigest(content) 
   end
 
   # Pre-process RDF graph for rendering its preview

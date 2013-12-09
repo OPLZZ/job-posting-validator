@@ -1,3 +1,5 @@
+require "csv"
+
 class ValidatorController < ApplicationController
   # Validate action
   #
@@ -9,6 +11,16 @@ class ValidatorController < ApplicationController
     # Note: webpage.valid? needs to be called, validation is lazy!
     valid = webpage.valid?
     errors = webpage.errors.messages 
+
+    # Log request and its results
+    log_line = [
+                request.remote_ip,
+                request.env["HTTP_USER_AGENT"],
+                webpage.hashed_content,
+                webpage.content,
+                JSON.generate(errors)
+              ].to_csv
+    logger.validator.info log_line
 
     respond_to do |format|
       format.html do
