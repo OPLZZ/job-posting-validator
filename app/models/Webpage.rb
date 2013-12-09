@@ -45,7 +45,8 @@ class Webpage
         begin
           validation_results = validator.validate data
           unless validation_results.empty?
-            errors[:validation] = preprocess_errors(filter_locale(validation_results))
+            preprocessed_errors = preprocess_errors(filter_locale(validation_results))
+            errors[:validation] = preprocessed_errors
           end 
         rescue RDF::ReaderError => error
           errors[:syntax] << error.message
@@ -240,7 +241,11 @@ class Webpage
       value.map { |item| preprocess_error_value(item) }.join(", ")
     when value.is_a?(Hash)
       if id = value["@id"]
-        id
+        if is_blank? id
+          ""
+        else
+          id
+        end 
       elsif value.key?("@language")
         value["@value"]
       end

@@ -20,7 +20,7 @@ describe ValidatorController do
     context "with valid input" do
       it "renders the :preview view for valid input" do
         post :validate, text: load_fixture("minimal_valid_webpage.html")
-        response.should render_template :preview 
+        response.should render_template :validate 
       end
     end
   end
