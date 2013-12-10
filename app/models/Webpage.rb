@@ -1,17 +1,20 @@
 require "active_model"
 require "digest/sha1"
 require "open-uri"
+require "rdf_util"
+require "webpage_validator"
 
 class Webpage
 
   include ActiveModel::Validations
+  include RDFUtil
 
   REJECTED_KEYS = [
     "http://www.w3.org/ns/rdfa#usesVocabulary",
     "http://www.w3.org/ns/md#item"
   ]
   
-  attr_accessor :file, :text, :url
+  attr_accessor :content, :data, :file, :text, :url
   
   # Load RDFa-annotated web page into a model
   #
@@ -25,39 +28,8 @@ class Webpage
     @url = options[:url]
   end
   
-  validate do
-    case 
-    when @url
-      if @url.empty?
-        errors[:input] << I18n.translate("errors.empty_url")
-      end
-    when @file
-      max_upload_size = ValidatorApp.config["max_upload_size_mb"] || 8
-      if file.size > max_upload_size.megabytes
-        file_size = @file.size.fdiv(1.megabyte).round(2)
-        errors[:input] << "File size #{file_size} MB exceeds maximum upload size #{max_upload_size} MB."
-      end
-    end
-
-    begin
-      if !content
-        errors[:input] << I18n.translate("errors.empty_input")
-      else
-        begin
-          validation_results = validator.validate data
-          unless validation_results.empty?
-            preprocessed_errors = preprocess_errors(filter_locale(validation_results))
-            errors[:validation] = preprocessed_errors
-          end 
-        rescue RDF::ReaderError => error
-          errors[:syntax] << error.message
-        rescue SPARQL::Client::MalformedQuery
-          errors[:sparql] << I18n.translate("errors.syntax") 
-        end
-      end
-    rescue URI::InvalidURIError => error
-      I18n.translate("errors.invalid_url") + " " + error.message
-    end
+  validate do |webpage|
+    WebpageValidator.new(webpage).validate
   end
 
   # Reads content from the provided params into a string payload.
@@ -90,7 +62,7 @@ class Webpage
   # @returns [String]
   #
   def hashed_content
-    @hashed_content ||= Digest::SHA1.hexdigest(content) 
+    @hashed_content ||= content ? Digest::SHA1.hexdigest(content) : nil 
   end
 
   # Pre-process RDF graph for rendering its preview
@@ -99,36 +71,6 @@ class Webpage
   #
   def job_postings
     @job_postings ||= convert_to_json data 
-  end
-
-  # Local alias 
-  def validator
-    ValidatorApp.instance 
-  end
-
-  # Localise value
-  #
-  # @param value [*]
-  # @returns [*]
-  #
-  def choose_locale(value)
-    if value.is_a?(Array) && value.any? { |obj| obj.is_a?(Hash) && obj.key?("@language") }
-      localised_value = value.select { |obj| obj["@language"] == I18n.locale.to_s }
-      localised_value.first["@value"]
-    else
-      value
-    end
-  end
-
-  # Filter localizable strings
-  #
-  # @param errors [Array<Hash>]
-  # @returns [Array<Hash>]
-  #
-  def filter_locale(errors)
-    errors.map do |error|
-      Hash[error.map { |k, v| [k, choose_locale(v)] }] 
-    end
   end
 
   # Convert `graph` into JSON-LD
@@ -205,15 +147,6 @@ class Webpage
     end 
   end
 
-  # Test if `value` is blank node
-  #
-  # @params value [String]
-  # @returns [Boolean]
-  #
-  def blank?(value)
-    value.start_with? "_:"
-  end
-
   def key_present?(params, key)
     params.key?(key) && ((params[key].respond_to?(:empty?) && !params[key].empty?) || (params[key].size != 0))
   end
@@ -230,36 +163,6 @@ class Webpage
     job_postings.map do |job_posting|
       filtered_job_posting = filter_job_posting job_posting
       replace_blank_nodes(filtered_job_posting, graph)
-    end
-  end
-
-  # Pre-process errors for simpler rendering
-  #
-  # @param errors [Array]
-  # @returns [Array]
-  #
-  def preprocess_errors(errors)
-    errors.map do |error|
-      Hash[error.map { |k, v| [k, preprocess_error_value(v)] }]
-    end
-  end
-
-  def preprocess_error_value(value)
-    case
-    when value.is_a?(Array)
-      value.map { |item| preprocess_error_value(item) }.join(", ")
-    when value.is_a?(Hash)
-      if id = value["@id"]
-        if blank? id
-          ""
-        else
-          id
-        end 
-      elsif value.key?("@language")
-        value["@value"]
-      end
-    else
-      value
     end
   end
 
@@ -294,4 +197,8 @@ class Webpage
     graph.detect { |obj| obj.key?("@id") && (obj["@id"] == id) }
   end
 
+  # Local alias 
+  def validator
+    ValidatorApp.instance 
+  end
 end

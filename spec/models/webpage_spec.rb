@@ -16,13 +16,6 @@ describe Webpage do
       webpage.should be_valid
     end
 
-    describe "#choose_locale" do
-      it "chooses correct locale for multi-lingual values"
-    end
-  
-    describe "#filter_locale" do
-    end
-
     describe "#convert_to_json" do
     end
 
@@ -38,29 +31,10 @@ describe Webpage do
     describe "#filter_job_posting" do
     end
 
-    describe "#blank?" do
-      let (:examples) {
-        {
-          "_:b1234" => true,
-          "_:abc"   => true,
-          "abc"     => false
-        }
-      }
-      it "correctly detects blank nodes" do
-        examples.each { |value, result| webpage.blank?(value).should == result } 
-      end 
-    end
-
     describe "#key_present?" do
     end
 
     describe "#nest" do
-    end
-
-    describe "#preprocess_errors" do
-    end
-
-    describe "#preprocess_error_value" do
     end
 
     describe "#replace_blank_nodes" do
