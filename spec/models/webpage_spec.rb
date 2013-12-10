@@ -38,7 +38,7 @@ describe Webpage do
     describe "#filter_job_posting" do
     end
 
-    describe "#is_blank?" do
+    describe "#blank?" do
       let (:examples) {
         {
           "_:b1234" => true,
@@ -47,7 +47,7 @@ describe Webpage do
         }
       }
       it "correctly detects blank nodes" do
-        examples.each { |value, result| webpage.is_blank?(value).should == result } 
+        examples.each { |value, result| webpage.blank?(value).should == result } 
       end 
     end
 

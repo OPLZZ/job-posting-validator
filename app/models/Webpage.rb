@@ -182,7 +182,7 @@ class Webpage
   def embed_hash(hash, graph)
     case
     when hash.key?("@id") && (hash.size == 1)
-      if is_blank?(hash["@id"])
+      if blank? hash["@id"]
         obj = select_object_by_id(hash["@id"], graph)
         replace_blank_nodes(obj, graph)
       else
@@ -210,7 +210,7 @@ class Webpage
   # @params value [String]
   # @returns [Boolean]
   #
-  def is_blank?(value)
+  def blank?(value)
     value.start_with? "_:"
   end
 
@@ -250,7 +250,7 @@ class Webpage
       value.map { |item| preprocess_error_value(item) }.join(", ")
     when value.is_a?(Hash)
       if id = value["@id"]
-        if is_blank? id
+        if blank? id
           ""
         else
           id
@@ -271,7 +271,7 @@ class Webpage
   #
   def replace_blank_nodes(obj, graph)
     # Remove "@id" attribute of JobPosting instance if it contains blank node
-    filtered_obj = obj.select { |k, v| !((k == "@id") && is_blank?(v)) }
+    filtered_obj = obj.select { |k, v| !((k == "@id") && blank?(v)) }
     Hash[filtered_obj.map { |k, v| [k, embed(v, graph)] }]
   end
 
