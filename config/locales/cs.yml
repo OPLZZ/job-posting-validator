@@ -4,10 +4,14 @@ cs:
     empty_url: "Prázdné URL"
     input: "Chybný vstup"
     invalid_url: "Neplatné URL:"
+    not_found:
+      title: "Nenalezeno"
+      description: "Požadované URL nebylo nalezeno."
     syntax: "Syntaktická chyba ve vstupních datech"
   home:
     enter_url: "Vložte URL k validaci"
-    explanation: "Náhled a validace webových stránek anotovaných v RDFa pomocí JobPosting ze Schema.org"
+    explanation: "Náhled a validace webových stránek anotovaných v RDFa pomocí JobPosting ze Schema.org."
+    learn_more: "Více informací" 
     made_by: "Vytvořeno"
     paste_markup: "zde vložte HTML"
     validate: "Validovat"

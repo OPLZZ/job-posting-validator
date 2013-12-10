@@ -11,6 +11,10 @@ This is a validator and preview for {RDFa-encoded}[http://www.w3.org/TR/rdfa-in-
   * <tt>rake validator:fuseki:stop</tt> to stop the Fuseki server.
   * <tt>rake validator:data:import_background_data</tt> to download background data, including the Schema.org vocabulary.
 
+=== Acknowledgement
+
+The development of this tool was supported by the project {Matching jobs with unemployed through semantic data}[http://damepraci.eu/].
+
 === License
 
 This project is provided under the terms of the {MIT License}[http://opensource.org/licenses/MIT].

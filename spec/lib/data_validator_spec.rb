@@ -71,13 +71,6 @@ describe DataValidator do
     end
     
     context "accessing SPARQL endpoint" do
-      #before (:all) do
-      #  Rake::Task["validator:fuseki:init"].invoke
-      #end
-      #after (:all) do
-      #  Rake::Task["validator:fuseki:stop"].invoke
-      #end
-
       describe "#clear_graph" do
         it "clear graph via SPARQL Update" do
           graph_name = data_validator.load_data load_fixture("valid.ttl")

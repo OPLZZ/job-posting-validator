@@ -4,10 +4,14 @@ en:
     empty_url: "Empty URL"
     input: "Invalid input"
     invalid_url: "Invalid URL:"
+    not_found:
+      title: "Not found"
+      description: "The requested URL was not found."
     syntax: "Syntax error in the input data"
   home:
     enter_url: "Enter URL to validate"
     explanation: "Preview and validate web pages annotated with Schema.org's JobPosting in RDFa."
+    learn_more: "Learn more"
     made_by: "Made by"
     paste_markup: "paste your markup here"
     validate: "Validate"
