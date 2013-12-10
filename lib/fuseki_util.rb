@@ -20,7 +20,7 @@ module FusekiUtil
     end
   end
   
-  # Test if path is executable fuseki-server script
+  # Test if there is executable fuseki-server script available on $PATH
   #
   # @returns [Boolean]
   #
@@ -80,7 +80,7 @@ module FusekiUtil
   # @returns [String]
   #
   def get_fuseki_command_prefix(args)
-    args.key?(:path) ? "cd #{args[:path]}; #{args[:path]}/" : ""
+    args[:path] ? "cd #{args[:path]}; #{args[:path]}/" : ""
   end
 
   # Return the number of triples in SPARQL endpoint

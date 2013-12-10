@@ -135,7 +135,7 @@ namespace :validator do
          "as $FUSEKI_VERSION environment variable (default is 1.0.0)."
     task :install => [:download, :unzip] do
       # Make fuseki-server executable
-      File.chmod(766, File.join(vendor_fuseki_path, "fuseki-server")) 
+      File.chmod(0755, File.join(vendor_fuseki_path, "fuseki-server")) 
       puts "Fuseki Server installed"
     end
 
