@@ -1,5 +1,5 @@
 module FusekiUtil
-  # Collection of utility functions for working
+  # Collection of utility methods for working
   # with Fuseki server
 
   # Get absolute path to `file` from the directory with bootstrapping data
