@@ -2,7 +2,7 @@ require "digest/sha1"
 
 class DataValidator
   ##
-  # Parses RDFa embedded in HTML and runs SPARQL tests on the extracted RDF.
+  # Parses structured data (RDFa or Microdata) embedded in HTML and runs SPARQL tests on the extracted RDF.
   
   IGNORED_ATTRS = ["@id"]
 
@@ -120,15 +120,16 @@ class DataValidator
     graph_name
   end
 
-  # Parse HTML `data` with RDFa into RDF graph
+  # Parse HTML `data` with structured data (RDFa or Microdata) into RDF graph
   #
-  # @param data [String] Input HTML containing RDFa to validate
+  # @param data [String] Input HTML containing structured data (RDFa or Microdata) to validate
   # @return [RDF::Graph] RDF graph containing the parsed data
   # @raise [RDF::ReaderError] If instantiated with `:strict` flag, raises `RDF::ReaderError` for syntactically
   #                           malformed input.
   #
   def parse(data)
     graph = RDF::Graph.new
+    # The reader will call out to RDF::Microdata::Reader if presence of Microdata is detected
     graph << RDF::RDFa::Reader.new(data, validate: @strict)
     graph 
   end

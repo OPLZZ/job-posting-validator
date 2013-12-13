@@ -10,7 +10,7 @@ cs:
     syntax: "Syntaktická chyba ve vstupních datech"
   home:
     enter_url: "Vložte URL k validaci"
-    explanation: "Náhled a validace webových stránek anotovaných v RDFa pomocí JobPosting ze Schema.org."
+    explanation: "Náhled a validace webových stránek anotovaných strukturovanými daty pomocí JobPosting ze Schema.org."
     learn_more: "Více informací" 
     made_by: "Vytvořeno"
     paste_markup: "zde vložte HTML"

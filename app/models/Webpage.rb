@@ -16,7 +16,7 @@ class Webpage
   
   attr_accessor :content, :data, :file, :text, :url
   
-  # Load RDFa-annotated web page into a model
+  # Load JobPosting-annotated web page into a model
   #
   # @options arguments [File] :file 
   # @options arguments [String] :text

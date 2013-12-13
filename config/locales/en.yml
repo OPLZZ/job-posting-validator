@@ -10,7 +10,7 @@ en:
     syntax: "Syntax error in the input data"
   home:
     enter_url: "Enter URL to validate"
-    explanation: "Preview and validate web pages annotated with Schema.org's JobPosting in RDFa."
+    explanation: "Preview and validate web pages annotated structured data using Schema.org's JobPosting."
     learn_more: "Learn more"
     made_by: "Made by"
     paste_markup: "paste your markup here"

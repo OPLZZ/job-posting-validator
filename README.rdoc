@@ -1,6 +1,6 @@
 == job-posting-validator
 
-This is a validator and preview for {RDFa-encoded}[http://www.w3.org/TR/rdfa-in-html/] data described using {Schema.org}[http://schema.org] {JobPosting}[http://schema.org/JobPosting].
+This is a validator and preview for structured data (both {RDFa}[http://www.w3.org/TR/rdfa-in-html/] and {Microdata}[http://www.whatwg.org/specs/web-apps/current-work/multipage/microdata.html]) described using {Schema.org}[http://schema.org] {JobPosting}[http://schema.org/JobPosting].
 
 === Usage
 

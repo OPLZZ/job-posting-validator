@@ -68,6 +68,9 @@ describe DataValidator do
         reference_graph = load_fixture "valid.ttl"
         count_job_postings(parsed_graph).should == count_job_postings(reference_graph)
       end
+      it "correctly parses Microdata embedded in HTML" do
+        pending "Provide a Microdata fixture"
+      end
     end
     
     context "accessing SPARQL endpoint" do
