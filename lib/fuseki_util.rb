@@ -7,7 +7,7 @@ module FusekiUtil
   # @returns [String] Absolute path to `file`
   #
   def data_path(file)
-    "#{Rails.root}/data/validator/bootstrap/#{file}"
+    Rails.root.join("data", "validator", "bootstrap", file)
   end
 
   # @param update_endpoint_url [String]   URI of SPARQL Update endpoint
@@ -42,6 +42,16 @@ module FusekiUtil
     descendants[parent_pid].flatten - [parent_pid]
   end
 
+  # If it's requested to change path the method prefixes Fuseki commands with
+  # cd command.
+  #
+  # @param args [Hash]
+  # @returns [String]
+  #
+  def get_fuseki_command_prefix(args)
+    args[:path] ? "cd #{args[:path]}; #{args[:path]}/" : ""
+  end
+
   # Deletes graphs older than `time` from `namespace` using SPARQL Update `query_endpoint`
   #
   # @param time [Fixnum]            Lower limit of graph age in seconds 
@@ -73,14 +83,15 @@ module FusekiUtil
     end
   end
 
-  # If it's requested to change path the method prefixes Fuseki commands with
-  # cd command.
+  # Returns path to Fuseki process ID,
+  # recursively making all missing directories
   #
-  # @param args [Hash]
-  # @returns [String]
+  # @return [String] Path to Fuseki process ID
   #
-  def get_fuseki_command_prefix(args)
-    args[:path] ? "cd #{args[:path]}; #{args[:path]}/" : ""
+  def get_pid_path
+    pids_path = File.join("tmp", "pids")
+    FileUtils.mkdir_p(pids_path) unless File.directory?(pids_path)
+    Rails.root.join(pids_path, "fuseki.pid")
   end
 
   # Return the number of triples in SPARQL endpoint
@@ -104,9 +115,9 @@ module FusekiUtil
 
   # Path to file where Fuseki Server's process ID is stored
   def pid_path
-    "#{Rails.root}/tmp/pids/fuseki.pid"
+    pid_path ||= get_pid_path
   end
- 
+
   # Read Fuseki Server's process ID
   #
   # @returns [Fixnum] Fuseki Server's process ID

@@ -21,10 +21,13 @@ describe FusekiUtil do
   describe "#get_child_pids" do
   end
 
+  describe "#get_fuseki_command_prefix" do
+  end
+
   describe "#get_old_graphs" do
   end
 
-  describe "#get_fuseki_command_prefix" do
+  describe "#get_pid_path" do
   end
 
   describe "#get_store_size" do
