@@ -131,8 +131,8 @@ namespace :validator do
     desc "Initialize Fuseki (start server + load data)"
     task :init => [:start, :load]
 
-    desc "Download and install Fuseki server. Specify the desired Fuseki version number "\
-         "as $FUSEKI_VERSION environment variable (default is 1.0.0)."
+    desc "Download and install Fuseki (specify $FUSEKI_VERSION as ENV variable, "\
+         "default is 1.0.0)."
     task :install => [:download, :unzip] do
       # Make fuseki-server executable
       File.chmod(0755, File.join(vendor_fuseki_path, "fuseki-server")) 
