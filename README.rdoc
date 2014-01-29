@@ -4,7 +4,7 @@ This is a validator and preview for structured data (both {RDFa}[http://www.w3.o
 
 === Usage
 
-* If you don't have {Fuseki server}[http://jena.apache.org/documentation/serving_data/index.html] installed, you can install it by running <tt>bundle exec rake validator:fuseki:install</tt>.
+* If you don't have {Fuseki server}[http://jena.apache.org/documentation/serving_data/index.html] installed, you can install it by running <tt>bundle exec rake validator:fuseki:install</tt>. By default this will install Fuseki Server version 1.0.1. You can ask for different version using the <tt>$FUSEKI_VERSION</tt> environment variable (e.g., <tt>export FUSEKI_VERSION=1.2.3</tt>).
 * If you haven't previously downloaded background data (including Schema.org) needed for the validator, run <tt>bundle exec rake validator:data:import_background_data</tt>.
 * Run <tt>bundle exec rake validator:fuseki:init</tt> to start the database (Fuseki Server) and load background data.
 * Deploy the Rails app.
