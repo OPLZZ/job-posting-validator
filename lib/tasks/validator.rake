@@ -108,7 +108,7 @@ namespace :validator do
     # Download the Fuseki Server
     task :download do
       puts "Downloading Fuseki Server"
-      version_number = ENV["FUSEKI_VERSION"] || "1.0.0" 
+      version_number = ENV["FUSEKI_VERSION"] || "1.0.1" 
       url = "http://www.apache.org/dist/jena/binaries/jena-fuseki-#{version_number}-distribution.zip"
         
       begin
