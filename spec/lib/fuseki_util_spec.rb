@@ -36,6 +36,9 @@ describe FusekiUtil do
   describe "#pid_path" do
   end
 
+  describe "#port_available?" do
+  end
+
   describe "#read_pid" do
   end
 

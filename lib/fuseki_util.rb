@@ -1,3 +1,6 @@
+require "socket"
+require "timeout"
+
 module FusekiUtil
   # Collection of utility methods for working
   # with Fuseki server
@@ -117,6 +120,27 @@ module FusekiUtil
   def pid_path
     pid_path ||= get_pid_path
   end
+  
+  # Tests if a given port is available
+  # Repurposed from <http://stackoverflow.com/a/9017896/385505>.
+  #
+  # @param port [Fixnum]    Port number
+  # @param ip [String]      IP address to test. Defaults to localhost.
+  # @param seconds [Fixnum] Connection timeout in seconds
+  # @returns [Boolean]
+  #
+  def port_available?(port, ip = "127.0.0.1", seconds = 1)
+    Timeout::timeout(seconds) do
+      begin
+        TCPSocket.new(ip, port).close
+        false
+      rescue Errno::ECONNREFUSED, Errno::EHOSTUNREACH
+        true
+      end
+    end
+  rescue Timeout::Error
+    false
+  end
 
   # Read Fuseki Server's process ID
   #
@@ -148,6 +172,10 @@ module FusekiUtil
   # @returns [Fixnum] Fuseki Server's process ID
   #
   def spawn_server(options = {}, **args)
+    unless port_available?(options["port"])
+      raise "Port #{options["port"]} is already in use. Change it to an available port in "\
+            "config/config.yml."
+    end
     prefix = get_fuseki_command_prefix args
     command = "#{prefix}fuseki-server --memTDB --update --port #{options["port"]} "\
               "--jetty-config=#{File.join(Rails.root, "config", "jetty-fuseki.xml")} "\
