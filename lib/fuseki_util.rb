@@ -1,6 +1,3 @@
-require "socket"
-require "timeout"
-
 module FusekiUtil
   # Collection of utility methods for working
   # with Fuseki server

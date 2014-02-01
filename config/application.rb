@@ -16,7 +16,7 @@ module Validator
 
       # Check if the Fuseki server is running
       if !server_running?
-        puts "Fuseki Server isn't running. Start it by using: rake validator:fuseki:init"
+        puts "Fuseki Server isn't running. Start it by using: bundle exec rake validator:fuseki:init"
         exit
       end
     end
