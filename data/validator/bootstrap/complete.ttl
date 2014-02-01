@@ -2995,7 +2995,7 @@
      "Délka trvání zkušenosti žadatele/ky o práci"@cs;
    <http://www.w3.org/2000/01/rdf-schema#domain> [ a <http://www.w3.org/2002/07/owl#Class>;
      <http://www.w3.org/2002/07/owl#unionOf> (<http://schema.org/Event> <http://schema.org/MediaObject> <http://schema.org/Movie> <http://schema.org/MusicRecording>)],
-     <http://schema.org/Experience>;
+     <http://schema.org/WorkExperience>;
    <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
    <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#duration> .
 
@@ -4597,7 +4597,7 @@
      "Kardinalita: 0..1"@cs;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates whether applicant is able to provide contact for references"@en,
      "Ukazuje, zda žadatel/ka může uvést kontakt pro poskytnutí reference k minulé práci"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/Experience>;
+   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/WorkExperience>;
    <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
    <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
 

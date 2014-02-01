@@ -7,7 +7,7 @@ include FusekiUtil
 namespace :validator do
   # Load configuration of the application
   task :load_config do
-    @config = YAML.load_file(File.join(Rails.root, "config", "config.yml"))[Rails.env]
+    @config = YAML.load_file(Rails.root.join("config", "config.yml"))[Rails.env]
   end
 
   namespace :data do
@@ -146,7 +146,11 @@ namespace :validator do
     
       @config["files_to_load"].each do |named_graph, paths|
         load_path = data_path paths["local"]
-        raise "File #{load_path} doesn't exist" unless File.exist? load_path
+        unless File.exist?(load_path)
+          raise "File #{load_path} doesn't exist. Use "\
+                "bundle exec rake validator:data:import_background_data to download "\
+                "the necessary files."
+        end
 
         request_url = "#{data_endpoint}?graph=#{named_graph}"
         response = RestClient::Request.execute(
