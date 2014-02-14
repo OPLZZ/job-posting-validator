@@ -55,6 +55,7 @@ module FusekiUtil
   # @param time [Fixnum]            Lower limit of graph age in seconds 
   # @param query_endpoint [String]  URI of SPARQL Update endpoint
   # @param namespace [String]       URI of namespace of the sought graphs
+  # @returns [Array<String>]        URIs of matching old graphs
   #
   def get_old_graphs(time, query_endpoint, namespace)
     sparql_query = SPARQL::Client.new query_endpoint

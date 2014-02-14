@@ -11,7 +11,7 @@ class DataValidator
     ))["@context"] 
 
   # Allow public access to validator's SPARQL Query endpoint to enable testing
-  attr_reader :sparql, :tests
+  attr_reader :sparql, :sparql_update, :tests
 
   # Create a validator client connected to Fuseki Server
   # 
@@ -45,6 +45,8 @@ class DataValidator
     end
 
     @base_uri = args[:base_uri].end_with?("/") ? args[:base_uri] : args[:base_uri] + "/"
+    @sparql_query_url = args[:sparql_endpoint]
+    @sparql_update_url = args[:sparql_update_endpoint] 
     @sparql = SPARQL::Client.new args[:sparql_endpoint]
     @sparql_update = SPARQL::Client.new(
                        args[:sparql_update_endpoint],

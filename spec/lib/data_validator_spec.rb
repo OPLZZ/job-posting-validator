@@ -9,7 +9,7 @@ describe DataValidator do
       namespace: Faker::Internet.url,
       sparql_endpoint: Faker::Internet.url,
       sparql_update_endpoint: Faker::Internet.url,
-      test_dir: "#{Rails.root}/config/validation-rules"
+      test_dir: Rails.root.join("config", "validation-rules")
     }
   }
 

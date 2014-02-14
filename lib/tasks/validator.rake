@@ -172,10 +172,11 @@ namespace :validator do
       endpoint_base = "http://127.0.0.1:#{@config["port"]}/#{@config["dataset"]}/"
       query_endpoint = endpoint_base + "query"
       update_endpoint = endpoint_base + "update"
+      namespace_url = @config["namespace"]
 
       store_size = get_store_size query_endpoint
       if store_size > 100000
-        old_graphs = get_old_graphs(20.minutes, query_endpoint, namespace)
+        old_graphs = get_old_graphs(20.minutes, query_endpoint, namespace_url)
         delete_graphs(update_endpoint, old_graphs)
         puts "Deleted #{old_graphs.size} old graphs."
       end
