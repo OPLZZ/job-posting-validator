@@ -30,16 +30,14 @@ module FusekiUtil
     !!(system command)
   end
 
-  # Source: http://t-a-w.blogspot.com/2010/04/how-to-kill-all-your-children.html
+  # Get process identifiers of parent_pid's child processes 
   #
   # @param parent_pid [Fixnum] Parent process' ID
+  # @returns [Array<Fixnum>]   Child processes' IDs
   #
   def get_child_pids(parent_pid)
-    descendants = Hash.new{ |ht,k| ht[k] = [k] }
-    Hash[*`ps -eo pid,ppid`.scan(/\d+/).map{ |x| x.to_i }].each{ |pid, ppid|
-      descendants[ppid] << descendants[pid]
-    }
-    descendants[parent_pid].flatten - [parent_pid]
+    processes = Sys::ProcTable.ps.select{ |pe| pe.ppid == parent_pid }
+    processes.map {|process| [process.pid, process.ppid]}.flatten - [parent_pid]
   end
 
   # If it's requested to change path the method prefixes Fuseki commands with

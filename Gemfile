@@ -46,6 +46,7 @@ group :development, :test do
   gem "faker", "~> 1.2.0"
 end
 
+gem "sys-proctable"
 gem "equivalent-xml", "~> 0.3.0"
 gem "http_accept_language", "~> 2.0.0.pre"
 gem "json", "~> 1.8.0"
