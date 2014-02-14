@@ -113,8 +113,8 @@ class Webpage
       end
     else
       strings = array.select { |item| item.is_a?(String) }.join(", ")
-      others = array.map { |item| embed(item, graph) }
-      [strings, others].join(" ")
+      others = array.select { |item| !item.is_a?(String) }.map { |item| embed(item, graph) }
+      [strings, others].join(" ").strip
     end
   end
 
