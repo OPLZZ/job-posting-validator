@@ -10,7 +10,7 @@ describe Webpage do
   end
 
   context "webpage with valid content" do
-    let (:webpage) { Webpage.new(text: load_fixture("minimal_valid_webpage.html")) }
+    let (:webpage) { Webpage.new(text: load_fixture("minimal_valid_rdfa.html")) }
     
     it "is valid provided with valid HTML including a JobPosting" do
       webpage.should be_valid

@@ -64,9 +64,11 @@ describe FusekiUtil do
 
   describe "#get_store_size" do
     it "returns correct store size" do
-      sparql_update_endpoint.clear :all
+      old_size = subject.get_store_size(sparql_query_endpoint_url)
       graph_uri = data_validator.load_data valid_graph
-      subject.get_store_size(sparql_query_endpoint_url).should == valid_graph.size
+      new_size = subject.get_store_size(sparql_query_endpoint_url)
+      new_size.should == old_size + valid_graph.size
+      sparql_update_endpoint.clear(:graph, graph_uri)
     end 
   end
 
