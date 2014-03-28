@@ -62,7 +62,7 @@ class Webpage
   # @returns [String]
   #
   def hashed_content
-    @hashed_content ||= content ? Digest::SHA1.hexdigest(content) : nil 
+    @hashed_content ||= valid? ? Digest::SHA1.hexdigest(content) : nil 
   end
 
   # Pre-process RDF graph for rendering its preview

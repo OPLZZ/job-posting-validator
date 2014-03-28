@@ -4,7 +4,7 @@ class ValidatorController < ApplicationController
   # Validate action
   #
   # For example:
-  #   http://localhost:3000/validate?url=https://dl.dropboxusercontent.com/u/893551/pracovni/OPLZZ_2013/validator-web/data/validator/examples/Filip_Podstavec_3.html
+  #   http://localhost:3000/validate?url=https://dl.dropboxusercontent.com/u/893551/pracovni/OPLZZ_2013/validator/data/validator/examples/Filip_Podstavec_3.html
   #   curl -H "Accept:application/json" --data-urlencode "text@data/validator/examples/Triplethink_4.html" http://localhost:3000/validate
   def validate
     webpage = Webpage.new params
@@ -17,7 +17,7 @@ class ValidatorController < ApplicationController
                 request.remote_ip,
                 request.env["HTTP_USER_AGENT"],
                 webpage.hashed_content,
-                webpage.content,
+                valid ? webpage.content : nil,
                 JSON.generate(errors)
               ].to_csv
     logger.validator.info log_line

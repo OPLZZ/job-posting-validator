@@ -12,6 +12,11 @@ describe Webpage do
       webpage = Webpage.new(url: ("a".."z").to_a.shuffle[0, 8].join)
       expect { webpage.content }.to raise_error(URI::InvalidURIError) 
     end
+
+    it "raises an exception if the provided URL cannot be found" do
+      webpage = Webpage.new(url: "http://httpbin.org/status/404")
+      expect { webpage.content }.to raise_error(OpenURI::HTTPError)
+    end
   end
 
   context "webpage with valid content" do
