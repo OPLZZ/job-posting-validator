@@ -94,6 +94,8 @@ class WebpageValidator < ActiveModel::Validator
     @webpage.errors[:input] << I18n.translate("errors.not_found.title") + " " + error.message
   rescue Timeout::Error => error
     @webpage.errors[:input] << I18n.translate("errors.timeout") + " " + error.message
+  rescue StandardError => error
+    @webpage.errors[:input] << error.message
   end
 
   def validate_input
