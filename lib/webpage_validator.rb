@@ -92,6 +92,8 @@ class WebpageValidator < ActiveModel::Validator
     @webpage.errors[:input] << I18n.translate("errors.invalid_url") + " " + error.message
   rescue OpenURI::HTTPError => error
     @webpage.errors[:input] << I18n.translate("errors.not_found.title") + " " + error.message
+  rescue Timeout::Error => error
+    @webpage.errors[:input] << I18n.translate("errors.timeout") + " " + error.message
   end
 
   def validate_input

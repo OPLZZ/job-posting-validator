@@ -8,6 +8,7 @@ en:
       title: "Not found"
       description: "The requested URL was not found."
     syntax: "Syntax error in the input data"
+    timeout: "Requesting the provided URL timed out."
   home:
     enter_url: "Enter URL to validate"
     explanation: "Preview and validate web pages annotated structured data using Schema.org's JobPosting."

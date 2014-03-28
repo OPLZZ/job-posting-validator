@@ -8,6 +8,7 @@ cs:
       title: "Nenalezeno"
       description: "Požadované URL nebylo nalezeno."
     syntax: "Syntaktická chyba ve vstupních datech"
+    timeout: "Maximální trvání požadavku na dané URL vypršelo." 
   home:
     enter_url: "Vložte URL k validaci"
     explanation: "Náhled a validace webových stránek anotovaných strukturovanými daty pomocí JobPosting ze Schema.org."
