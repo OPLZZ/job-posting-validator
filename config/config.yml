@@ -4,7 +4,7 @@ defaults: &defaults
     "http://vocab.damepraci.eu":
       local: complete.ttl
       remote:
-      - "http://topbraid.org/schema/schema.ttl"
+      - "http://schema.org/docs/schema_org_rdfa.html"
       - "https://raw.github.com/OPLZZ/data-modelling/master/cs.ttl"
       - "https://raw.github.com/OPLZZ/data-modelling/master/schemaExt.ttl"
       - "https://raw.github.com/OPLZZ/data-modelling/master/validator.ttl"

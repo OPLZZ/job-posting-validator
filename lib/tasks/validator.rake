@@ -55,8 +55,12 @@ namespace :validator do
       paths = @config["files_to_load"]["http://vocab.damepraci.eu"]
       graph = RDF::Graph.new
       paths["remote"].each do |url|
-        turtle = download url
-        graph << RDF::Turtle::Reader.new(turtle)
+        data = download url
+        graph << if url.end_with?("ttl")
+                   RDF::Turtle::Reader.new(data)
+                 else
+                   RDF::RDFa::Reader.new(data)
+                 end
       end
       schema_org = graph.dump(:turtle)
       write_data(schema_org, paths["local"])
