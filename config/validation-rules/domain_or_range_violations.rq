@@ -3,6 +3,7 @@
 PREFIX owl:     <http://www.w3.org/2002/07/owl#>
 PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:  <http://schema.org/>
 PREFIX spin:    <http://spinrdf.org/spin#>
 
 CONSTRUCT {
@@ -24,27 +25,27 @@ WHERE {
       }
       # Check if rdfs:range and rdfs:domain are available for the properties.
       GRAPH <http://vocab.damepraci.eu> {
-        ?p1 rdfs:range [] .
-        ?p2 rdfs:domain [] .
+        ?p1 schema:rangeIncludes [] .
+        ?p2 schema:domainIncludes [] .
       }
       # Check if rdfs:range and rdfs:domain matches.
       FILTER NOT EXISTS {
         GRAPH <http://vocab.damepraci.eu> {
           {
-            ?p1 rdfs:range/rdfs:subClassOf*/^rdfs:domain ?p2 .
+            ?p1 schema:rangeIncludes/rdfs:subClassOf*/^schema:domainIncludes ?p2 .
           } UNION {
-            ?p2 rdfs:domain [
+            ?p2 schema:domainIncludes [
               owl:unionOf ?unionOf
             ] .
-            ?unionOf rdf:rest*/rdf:first/rdfs:subClassOf*/^rdfs:range ?p1 .
+            ?unionOf rdf:rest*/rdf:first/rdfs:subClassOf*/^schema:rangeIncludes ?p1 .
           } UNION {
-            ?p1 rdfs:range [
+            ?p1 schema:rangeIncludes [
               owl:unionOf ?unionOf
             ] .
-            ?unionOf rdf:rest*/rdf:first/rdfs:subClassOf*/^rdfs:domain ?p2 .
+            ?unionOf rdf:rest*/rdf:first/rdfs:subClassOf*/^schema:domainIncludes ?p2 .
           } UNION {
-            ?p1 rdfs:range/owl:unionOf/rdf:rest*/rdf:first/rdfs:subClassOf* ?class .
-            ?p2 rdfs:domain/owl:unionOf/rdf:rest*/rdf:first/rdfs:subClassOf* ?class .
+            ?p1 schema:rangeIncludes/owl:unionOf/rdf:rest*/rdf:first/rdfs:subClassOf* ?class .
+            ?p2 schema:domainIncludes/owl:unionOf/rdf:rest*/rdf:first/rdfs:subClassOf* ?class .
           }
         }
       }

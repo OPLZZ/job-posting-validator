@@ -6,7 +6,7 @@ CONSTRUCT {
   [] a spin:ConstraintViolation ;
     spin:violationRoot ?s ;
     spin:violationPath ?p ;
-    spin:invalidValue ?o ;
+    spin:invalidValue ?tag ;
     rdfs:label "Invalid language code."@en , 
       "Neplatný kód jazyka."@cs ;
     rdfs:comment "Use ISO 639-1 codes: http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes"@en ,
@@ -17,11 +17,12 @@ WHERE {
   GRAPH ?validatedGraph {
     ?s ?p ?o .
     FILTER (isLiteral(?o) && !(lang(?o) = ""))
+    BIND (REPLACE(lang(?o), "-[a-z]+$", "") AS ?tag) # Strip language sub-tag
   }
   FILTER NOT EXISTS {
     GRAPH <http://id.loc.gov/vocabulary/iso639-1> {
       [] skos:notation ?lang .
-      FILTER (langMatches(lang(?o), ?lang))
+      FILTER (?tag = ?lang)
     }
   }
 }

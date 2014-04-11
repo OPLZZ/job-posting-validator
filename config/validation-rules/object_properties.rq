@@ -1,6 +1,4 @@
-PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX schema:  <http://schema.org/>
 PREFIX spin:    <http://spinrdf.org/spin#>
 
 CONSTRUCT {
@@ -12,15 +10,7 @@ CONSTRUCT {
 }
 WHERE {
   GRAPH ?validatedGraph {
-    VALUES ?objectProperty {
-      schema:address
-      schema:compensation
-      schema:contact
-      dcterms:publisher
-      schema:employer
-      schema:experienceRequirements
-      schema:jobLocation
-    }
+    ?objectProperty a owl:ObjectProperty .
     ?s ?objectProperty ?o .
     FILTER (isLiteral(?o))
     BIND (STRLANG(CONCAT(

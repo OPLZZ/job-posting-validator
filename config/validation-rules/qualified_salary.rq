@@ -1,0 +1,20 @@
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX schema:  <http://schema.org/>
+PREFIX spin:    <http://spinrdf.org/spin#>
+
+CONSTRUCT {
+  [] a spin:ConstraintViolation ;
+    spin:violationRoot ?jobPosting ;
+    spin:violationPath schema:baseSalary, schema:salaryCurrency ;
+    rdfs:label "Salary has to state its currency (schema:salaryCurrency)."@en , 
+      "U mzdy musí být uvedena měna (schema:salaryCurrency)."@cs
+    .
+}
+WHERE {
+  GRAPH ?validatedGraph {
+    ?jobPosting schema:baseSalary ?salary .
+    FILTER NOT EXISTS {
+      ?jobPosting schema:salaryCurrency [] .
+    }
+  }
+}
