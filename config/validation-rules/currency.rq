@@ -18,11 +18,11 @@ WHERE {
   GRAPH ?validatedGraph {
     ?s schema:currency ?currency .
   }
-  BIND (str(?currency) AS ?plainCurrency)
+  BIND (str(?currency) AS ?currencyStr)
   FILTER NOT EXISTS {
     GRAPH <http://data.damepraci.cz/resource/currency-codes> {
       [] skos:inScheme <http://data.damepraci.cz/resource/concept-scheme/currency-codes> ;
-        skos:notation ?plainCurrency .
+        skos:notation ?currencyStr .
     }
   }
 }
