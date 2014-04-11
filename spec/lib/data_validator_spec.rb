@@ -111,7 +111,7 @@ describe DataValidator do
             graph_name = data_validator.load_data load_fixture(File.basename(test, ".rq") + ".ttl")
             test_result = data_validator.run_test(test, graph_name)
             data_validator.clear_graph graph_name
-            test_result.should_not be_empty
+            test_result.should_not be_empty, "Failed test: #{test}" 
           end
         end
       end
