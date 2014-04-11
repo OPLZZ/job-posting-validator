@@ -11,8 +11,10 @@ CONSTRUCT {
     .
 }
 WHERE {
-  GRAPH ?validatedGraph {
+  GRAPH <http://vocab.damepraci.eu> {
     ?datatypeProperty a owl:DatatypeProperty .
+  }
+  GRAPH ?validatedGraph {
     ?s ?datatypeProperty ?o .
     FILTER (!isLiteral(?o))
     BIND (STRLANG(CONCAT(
