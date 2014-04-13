@@ -85,6 +85,8 @@ GEM
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     polyglot (0.3.3)
+    puma (2.7.1)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -209,6 +211,7 @@ DEPENDENCIES
   logger (~> 1.2.8)
   multi_logger (~> 0.1.0)
   nokogiri (~> 1.6.0)
+  puma
   rails (= 4.0.0)
   rdf (~> 1.0.7)
   rdf-microdata (~> 1.0.0)
