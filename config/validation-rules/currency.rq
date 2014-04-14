@@ -11,7 +11,7 @@ CONSTRUCT {
     rdfs:label "Invalid currency code."@en , 
       "Neplatný kód měny."@cs ;
     rdfs:comment "Use ISO 4217 codes: http://en.wikipedia.org/wiki/ISO_4217 (e.g., 'EUR' for Euro, 'USD' for U.S. dollars)"@en ,
-      "Použijte kódy z ISO 4217: http://cs.wikipedia.org/wiki/ISO_4217 (např. 'CZK' pro české koruny, 'EUR' pro Eura)"
+      "Použijte kódy z ISO 4217: http://cs.wikipedia.org/wiki/ISO_4217 (např. 'CZK' pro české koruny, 'EUR' pro Eura)"@cs
     .
 }
 WHERE {
