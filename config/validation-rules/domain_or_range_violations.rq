@@ -23,12 +23,12 @@ WHERE {
         ?s ?p1 ?o .
         ?o ?p2 ?o2 .
       }
-      # Check if rdfs:range and rdfs:domain are available for the properties.
+      # Check if schema:domainIncludes and schema:rangeIncludes are available for the properties.
       GRAPH <http://vocab.damepraci.eu> {
         ?p1 schema:rangeIncludes [] .
         ?p2 schema:domainIncludes [] .
       }
-      # Check if rdfs:range and rdfs:domain matches.
+      # Check if schema:domainIncludes and schema:rangeIncludes match.
       FILTER NOT EXISTS {
         GRAPH <http://vocab.damepraci.eu> {
           {
