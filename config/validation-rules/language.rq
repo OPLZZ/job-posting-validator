@@ -17,12 +17,11 @@ WHERE {
   GRAPH ?validatedGraph {
     ?s ?p ?o .
     FILTER (isLiteral(?o) && !(lang(?o) = ""))
-    BIND (REPLACE(lang(?o), "-[a-z]+$", "") AS ?tag) # Strip language sub-tag
+    BIND (REPLACE(lang(?o), "-[a-zA-Z]+$", "") AS ?tag) # Strip language sub-tag
   }
   FILTER NOT EXISTS {
     GRAPH <http://id.loc.gov/vocabulary/iso639-1> {
-      [] skos:notation ?lang .
-      FILTER (?tag = ?lang)
+      [] skos:notation ?tag .
     }
   }
 }
