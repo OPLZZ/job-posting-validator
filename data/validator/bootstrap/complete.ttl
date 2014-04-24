@@ -27,8 +27,14 @@
 
 <http://schema.org/Action> a <http://www.w3.org/2000/01/rdf-schema#Class>;
    <http://www.w3.org/2000/01/rdf-schema#label> "Action";
+   <http://purl.org/dc/terms/source> <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "An action performed by a direct agent and indirect     participants upon a direct object. Optionally happens at a location     with the help of an inanimate instrument. The execution of the action     may produce a result. Specific action sub-type documentation specifies     the exact expectation of each argument/role.";
    <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://schema.org/Thing> .
+
+<http://schema.org/ActionStatusType> a <http://www.w3.org/2000/01/rdf-schema#Class>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "ActionStatusType";
+   <http://www.w3.org/2000/01/rdf-schema#comment> "The status of an Action.";
+   <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://schema.org/Enumeration> .
 
 <http://schema.org/AddAction> a <http://www.w3.org/2000/01/rdf-schema#Class>;
    <http://www.w3.org/2000/01/rdf-schema#label> "AddAction";
@@ -1016,6 +1022,12 @@
    <http://www.w3.org/2000/01/rdf-schema#comment> "A business providing entertainment.";
    <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://schema.org/LocalBusiness> .
 
+<http://schema.org/EntryPoint> a <http://www.w3.org/2000/01/rdf-schema#Class>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "EntryPoint";
+   <http://purl.org/dc/terms/source> <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "An entry point, within some Web-based protocol.";
+   <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://schema.org/Intangible> .
+
 <http://schema.org/Enumeration> a <http://www.w3.org/2000/01/rdf-schema#Class>;
    <http://www.w3.org/2000/01/rdf-schema#label> "Enumeration";
    <http://www.w3.org/2000/01/rdf-schema#comment> "Lists or enumerations&#x2014;for example, a list of cuisines or music genres, etc.";
@@ -1376,7 +1388,7 @@
 
 <http://schema.org/ItemAvailability> a <http://www.w3.org/2000/01/rdf-schema#Class>;
    <http://www.w3.org/2000/01/rdf-schema#label> "ItemAvailability";
-   <http://www.w3.org/2000/01/rdf-schema#comment> "A list of possible product availablity options.";
+   <http://www.w3.org/2000/01/rdf-schema#comment> "A list of possible product availability options.";
    <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://schema.org/Enumeration> .
 
 <http://schema.org/ItemList> a <http://www.w3.org/2000/01/rdf-schema#Class>;
@@ -2311,6 +2323,12 @@
    <http://www.w3.org/2000/01/rdf-schema#comment> "A property, used to indicate attributes and relationships of some Thing; equivalent to rdf:Property.";
    <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://schema.org/Thing> .
 
+<http://schema.org/PropertyValueSpecification> a <http://www.w3.org/2000/01/rdf-schema#Class>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "PropertyValueSpecification";
+   <http://purl.org/dc/terms/source> <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "A Property value specification.";
+   <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://schema.org/Intangible> .
+
 <http://schema.org/PsychologicalTreatment> a <http://www.w3.org/2000/01/rdf-schema#Class>;
    <http://www.w3.org/2000/01/rdf-schema#label> "PsychologicalTreatment";
    <http://purl.org/dc/terms/source> <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_WikiDoc>;
@@ -3156,22 +3174,29 @@
    <http://www.w3.org/2000/01/rdf-schema#comment> "A zoo.";
    <http://www.w3.org/2000/01/rdf-schema#subClassOf> <http://schema.org/CivicStructure> .
 
-<http://purl.org/dc/terms/modified> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://purl.org/dc/terms/modified> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "změněno"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#comment> "Datum, kdy byla nabídka práce změněna."@cs;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#date> .
+   <http://schema.org/rangeIncludes> <http://schema.org/Date>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Datum, kdy byla nabídka práce změněna."@cs .
 
-<http://purl.org/dc/terms/publisher> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://purl.org/dc/terms/publisher> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#ObjectProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "zveřejnil"@cs;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Subjekt zveřejňující nabídku práce."@cs .
 
-<http://purl.org/dc/terms/valid> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://purl.org/dc/terms/valid> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "platnost"@cs;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Datum (nebo časové rozmezí) určující meze platnosti nabídky práce."@cs .
 
 <http://schema.org/Abdomen> a <http://schema.org/PhysicalExam>;
    <http://www.w3.org/2000/01/rdf-schema#label> "Abdomen";
    <http://www.w3.org/2000/01/rdf-schema#comment> "Abdomen" .
+
+<http://schema.org/ActiveActionStatus> a <http://schema.org/ActionStatusType>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "ActiveActionStatus";
+   <http://www.w3.org/2000/01/rdf-schema#comment> "An in-progress action (e.g, while watching the movie, or driving to a location)." .
 
 <http://schema.org/ActiveNotRecruiting> a <http://schema.org/MedicalStudyStatus>;
    <http://www.w3.org/2000/01/rdf-schema#label> "ActiveNotRecruiting";
@@ -3240,6 +3265,10 @@
 <http://schema.org/Completed> a <http://schema.org/MedicalStudyStatus>;
    <http://www.w3.org/2000/01/rdf-schema#label> "Completed";
    <http://www.w3.org/2000/01/rdf-schema#comment> "Completed." .
+
+<http://schema.org/CompletedActionStatus> a <http://schema.org/ActionStatusType>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "CompletedActionStatus";
+   <http://www.w3.org/2000/01/rdf-schema#comment> "An action that has already taken place." .
 
 <http://schema.org/CrossSectional> a <http://schema.org/MedicalObservationalStudyDesign>;
    <http://www.w3.org/2000/01/rdf-schema#label> "CrossSectional";
@@ -3625,6 +3654,10 @@
    <http://www.w3.org/2000/01/rdf-schema#label> "Podiatric";
    <http://www.w3.org/2000/01/rdf-schema#comment> "Podiatry." .
 
+<http://schema.org/PotentialActionStatus> a <http://schema.org/ActionStatusType>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "PotentialActionStatus";
+   <http://www.w3.org/2000/01/rdf-schema#comment> "A description of an action that is supported." .
+
 <http://schema.org/PreOrder> a <http://schema.org/ItemAvailability>;
    <http://www.w3.org/2000/01/rdf-schema#label> "PreOrder";
    <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates that the item for sale is available for pre-order." .
@@ -3912,7 +3945,14 @@
    <http://www.w3.org/2000/01/rdf-schema#label> "action";
    <http://schema.org/domainIncludes> <http://schema.org/Muscle>;
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+   <http://schema.org/supercededBy> <http://schema.org/muscleAction>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The movement the muscle generates." .
+
+<http://schema.org/actionStatus> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "actionStatus";
+   <http://schema.org/domainIncludes> <http://schema.org/Action>;
+   <http://schema.org/rangeIncludes> <http://schema.org/ActionStatusType>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates the current disposition of the Action." .
 
 <http://schema.org/activeIngredient> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "activeIngredient";
@@ -3971,7 +4011,8 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Any additional component of the exercise prescription that may need to be articulated to the patient. This may include the order of exercises, the number of repetitions of movement, quantitative distance, progressions over time, etc." .
 
-<http://schema.org/address> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/address> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#ObjectProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "address",
      "adresa"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/Organization>,
@@ -3987,7 +4028,8 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Country>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The country. For example, USA. You can also provide the two-letter <a href='http://en.wikipedia.org/wiki/ISO_3166-1'>ISO 3166-1 alpha-2 country code</a>." .
 
-<http://schema.org/addressLocality> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/addressLocality> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "addressLocality",
      "obec"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/PostalAddress>;
@@ -3995,7 +4037,8 @@
    <http://www.w3.org/2000/01/rdf-schema#comment> "The locality. For example, Mountain View.",
      "Lokalita obsažená v poštovní adrese, např. město."@cs .
 
-<http://schema.org/addressRegion> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/addressRegion> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "addressRegion";
    <http://schema.org/domainIncludes> <http://schema.org/PostalAddress>;
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
@@ -4131,6 +4174,12 @@
      <http://schema.org/DrugLegalStatus>;
    <http://schema.org/rangeIncludes> <http://schema.org/AdministrativeArea>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The location in which the status applies." .
+
+<http://schema.org/application> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "application";
+   <http://schema.org/domainIncludes> <http://schema.org/EntryPoint>;
+   <http://schema.org/rangeIncludes> <http://schema.org/SoftwareApplication>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "An application that can complete the request." .
 
 <http://schema.org/applicationCategory> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "applicationCategory";
@@ -4412,16 +4461,17 @@
    <http://schema.org/rangeIncludes> <http://schema.org/DateTime>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "After this date, the item will no longer be available for pickup." .
 
-<http://schema.org/availableVacancies> a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+<http://schema.org/availableVacancies> a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "available vacancies"@en,
      "počet nabízených míst"@cs;
    <http://purl.org/vocab/vann/usageNote> "Cardinality 0..1"@en,
      "Kardinalita 0..1"@cs;
+   <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
+   <http://schema.org/rangeIncludes> <http://www.w3.org/2001/XMLSchema#positiveInteger>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Number of persons sought for a job. Default value is 1."@en,
      "Počet osob požadovaných pro práci. Výchozí hodnotou je 1."@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/JobPosting>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#positiveInteger> .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/awards> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "awards";
@@ -4742,7 +4792,7 @@
    <http://schema.org/domainIncludes> <http://schema.org/CreativeWork>;
    <http://schema.org/rangeIncludes> <http://schema.org/CreativeWork>,
      <http://schema.org/Text>;
-   <http://www.w3.org/2000/01/rdf-schema#comment> "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc. NOTE: Candidate for promotion to ScholarlyArticle." .
+   <http://www.w3.org/2000/01/rdf-schema#comment> "A citation or reference to another creative work, such as another publication, web page, scholarly article, etc." .
 
 <http://schema.org/clincalPharmacology> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "clincalPharmacology";
@@ -4830,16 +4880,17 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Date>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The time at which the UserComment was made." .
 
-<http://schema.org/compensation> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/compensation> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#ObjectProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "compensation"@en,
      "kompenzace"@cs;
    <http://purl.org/vocab/vann/usageNote> "Cardinality: n..n"@en,
      "Kardinalita: n..n"@cs;
+   <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Compensation>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Compensation paid by employer to employee as stated in job posting"@en,
      "Kompenzace hrazená zaměstnavatelem zaměstnanci popsaná v nabídce práce"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/JobPosting>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://schema.org/Compensation> .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/comprisedOf> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "comprisedOf";
@@ -4860,16 +4911,17 @@
    <http://schema.org/rangeIncludes> <http://schema.org/AnatomicalStructure>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Other anatomical structures to which this structure is connected." .
 
-<http://schema.org/contact> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/contact> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#ObjectProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "contact"@en,
      "kontakt"@cs;
    <http://purl.org/vocab/vann/usageNote> "Cardinality: n..n"@en,
      "Kardinalita: n..n"@cs;
+   <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
+   <http://schema.org/rangeIncludes> <http://schema.org/ContactPoint>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Contact information job seeker needs to respond to job posting"@en,
      "Kontaktní informace, které jsou zapotřebí proto, aby uchazeč o práci mohl odpovědět na nabídku práce"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/JobPosting>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://schema.org/ContactPoint> .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/contactOption> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "contactOption";
@@ -4914,6 +4966,12 @@
    <http://schema.org/domainIncludes> <http://schema.org/MediaObject>;
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "File size in (mega/kilo) bytes." .
+
+<http://schema.org/contentType> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "contentType";
+   <http://schema.org/domainIncludes> <http://schema.org/EntryPoint>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "The supported content type(s) for an EntryPoint response." .
 
 <http://schema.org/contentUrl> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "contentUrl";
@@ -5023,16 +5081,17 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The currency accepted (in <a href='http://en.wikipedia.org/wiki/ISO_4217'>ISO 4217 currency format</a>)." .
 
-<http://schema.org/currency> a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+<http://schema.org/currency> a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "currency"@en,
      "měna"@cs;
    <http://purl.org/vocab/vann/usageNote> "Cardinality 1..1"@en,
      "Kardinalita 1..1"@cs;
+   <http://schema.org/domainIncludes> <http://schema.org/Compensation>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Currency (in 3-letter ISO 4217 format), in which compensation is paid"@en,
      "Měna (v 3-místném formátu ISO 4217), ve které je vyplácena kompenzace"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/Compensation>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/customer> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "customer";
@@ -5094,6 +5153,13 @@
    <http://schema.org/domainIncludes> <http://schema.org/Person>;
    <http://schema.org/rangeIncludes> <http://schema.org/Date>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Date of death." .
+
+<http://schema.org/defaultValue> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "defaultValue";
+   <http://schema.org/domainIncludes> <http://schema.org/PropertyValueSpecification>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Thing>,
+     <http://schema.org/Literal>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "The default value of the input.  For properties that expect a literal, the default is a literal value, for properties that expect an object, it's an ID reference to one of the current values." .
 
 <http://schema.org/deliveryAddress> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "deliveryAddress";
@@ -5186,7 +5252,8 @@
      <http://schema.org/QuantitativeValue>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The depth of the product." .
 
-<http://schema.org/description> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/description> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "description",
      "popis"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/Thing>;
@@ -5388,7 +5455,8 @@
    <http://www.w3.org/2000/01/rdf-schema#comment> "A therapy that duplicates or overlaps this one." .
 
 <http://schema.org/duration> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
-     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+     <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "duration",
      "duration"@en,
      "délka"@cs;
@@ -5397,14 +5465,13 @@
    <http://schema.org/domainIncludes> <http://schema.org/MediaObject>,
      <http://schema.org/Event>,
      <http://schema.org/Movie>,
-     <http://schema.org/MusicRecording>;
+     <http://schema.org/MusicRecording>,
+     <http://schema.org/WorkExperience>;
    <http://schema.org/rangeIncludes> <http://schema.org/Duration>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The duration of the item (movie, audio recording, event, etc.) in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>.",
      "Length of period during which job applicant acquired experience"@en,
      "Délka trvání zkušenosti žadatele/ky o práci"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/WorkExperience>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#duration> .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/durationOfWarranty> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "durationOfWarranty";
@@ -5495,7 +5562,8 @@
    <http://schema.org/rangeIncludes> <http://schema.org/PriceSpecification>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The transaction volume, in a monetary unit, for which the offer or price specification is valid, e.g. for indicating a minimal purchasing volume, to express free shipping above a certain order volume, or to limit the acceptance of credit cards to purchases to a certain minimal amount." .
 
-<http://schema.org/email> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/email> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "email",
      "email"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/Organization>,
@@ -5518,7 +5586,8 @@
    <http://schema.org/supercededBy> <http://schema.org/employee>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "People working for this organization. (legacy spelling; see singular form, employee)" .
 
-<http://schema.org/employmentType> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/employmentType> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "employmentType",
      "typ pracovního úvazku"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
@@ -5537,6 +5606,12 @@
    <http://schema.org/domainIncludes> <http://schema.org/MediaObject>;
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "mp3, mpeg4, etc." .
+
+<http://schema.org/encodingType> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "encodingType";
+   <http://schema.org/domainIncludes> <http://schema.org/EntryPoint>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "The supported encoding type(s) for an EntryPoint request." .
 
 <http://schema.org/encodings> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "encodings";
@@ -5688,14 +5763,15 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The likely outcome in either the short term or long term of the medical condition." .
 
-<http://schema.org/experienceRequirements> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/experienceRequirements> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#ObjectProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "experienceRequirements",
      "požadované zkušenosti"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
-   <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Text>,
+     <http://schema.org/WorkExperience>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Description of skills and experience needed for the position.",
-     "Popis pracovních zkušeností, které jsou požadovány pro nabízenou práci."@cs;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://schema.org/WorkExperience> .
+     "Popis pracovních zkušeností, které jsou požadovány pro nabízenou práci."@cs .
 
 <http://schema.org/expertConsiderations> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "expertConsiderations";
@@ -6036,6 +6112,12 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "How the procedure is performed." .
 
+<http://schema.org/httpMethod> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "httpMethod";
+   <http://schema.org/domainIncludes> <http://schema.org/EntryPoint>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "An HTTP method that specifies the appropriate HTTP method for a request to an HTTP EntryPoint. Values are capitalized strings as used in HTTP." .
+
 <http://schema.org/iataCode> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "iataCode";
    <http://schema.org/domainIncludes> <http://schema.org/Airline>,
@@ -6123,7 +6205,8 @@
    <http://schema.org/rangeIncludes> <http://schema.org/MedicalIndication>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "A factor that indicates use of this therapy for treatment and/or prevention of a condition, symptom, etc. For therapies such as drugs, indications can include both officially-approved indications as well as off-label uses. These can be distinguished by using the ApprovedIndication subtype of MedicalIndication." .
 
-<http://schema.org/industry> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/industry> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "industry",
      "odvětví"@cs;
    <http://purl.org/vocab/vann/usageNote> "Includes also private employment etc."@en,
@@ -6260,16 +6343,17 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Product>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "A pointer to another, somehow related product (or multiple products)." .
 
-<http://schema.org/isRemoteWork> a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+<http://schema.org/isRemoteWork> a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "is remote work"@en,
      "práce na dálku"@cs;
    <http://purl.org/vocab/vann/usageNote> "Cardinality: 0..1"@en,
      "Kardinalita: 0..1"@cs;
+   <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Boolean>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates job postings for which location of execution does not matter (i.e. remote work)"@en,
      "Označení nabídek práce, pro které na místu výkonu nezáleží (tj. práce na dálku)"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/JobPosting>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/isSimilarTo> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "isSimilarTo";
@@ -6351,11 +6435,13 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Product>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Item(s) being shipped." .
 
-<http://schema.org/jobLocation> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/jobLocation> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#ObjectProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "jobLocation",
      "místo výkonu práce"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
-   <http://schema.org/rangeIncludes> <http://schema.org/Place>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Place>,
+     <http://schema.org/PostalAddress>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "A (typically single) geographic location associated with the job position.",
      "Geografická lokalita asociovaná s nabízenou prací."@cs .
 
@@ -6539,12 +6625,15 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Number>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The highest price if the price is a range." .
 
-<http://schema.org/maxValue> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/maxValue> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "maxValue",
      "maximální hodnota"@cs;
-   <http://schema.org/domainIncludes> <http://schema.org/QuantitativeValue>;
+   <http://schema.org/domainIncludes> <http://schema.org/QuantitativeValue>,
+     <http://schema.org/PropertyValueSpecification>;
    <http://schema.org/rangeIncludes> <http://schema.org/Number>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The upper of the product characteristic.",
+     "Specifies a regular expression for testing literal values according to the HTML spec.",
      "Maximální hodnota kompenzace za práci."@cs .
 
 <http://schema.org/maximumIntake> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
@@ -6633,12 +6722,15 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Number>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The lowest price if the price is a range." .
 
-<http://schema.org/minValue> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/minValue> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "minValue",
      "minimální hodnota"@cs;
-   <http://schema.org/domainIncludes> <http://schema.org/QuantitativeValue>;
+   <http://schema.org/domainIncludes> <http://schema.org/QuantitativeValue>,
+     <http://schema.org/PropertyValueSpecification>;
    <http://schema.org/rangeIncludes> <http://schema.org/Number>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The lower value of the product characteristic.",
+     "Specifies a regular expression for testing literal values according to the HTML spec.",
      "Minimální hodnota kompenzace za práci."@cs .
 
 <http://schema.org/model> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
@@ -6661,6 +6753,12 @@
      <http://schema.org/Demand>;
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The Manufacturer Part Number (MPN) of the product, or the product to which the offer refers." .
+
+<http://schema.org/multipleValues> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "multipleValues";
+   <http://schema.org/domainIncludes> <http://schema.org/PropertyValueSpecification>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Boolean>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Whether multiple values are allowed for the property.  Default is false." .
 
 <http://schema.org/musicBy> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "musicBy";
@@ -6688,7 +6786,8 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The North American Industry Classification System (NAICS) code for a particular organization or business person." .
 
-<http://schema.org/name> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/name> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "name",
      "jméno"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/Thing>;
@@ -7166,6 +7265,12 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The postal code. For example, 94043." .
 
+<http://schema.org/potentialAction> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "potentialAction";
+   <http://schema.org/domainIncludes> <http://schema.org/Thing>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Action>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates a potential Action, which describes an idealized action in which this thing would play an 'object' role." .
+
 <http://schema.org/preOp> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "preOp";
    <http://schema.org/domainIncludes> <http://schema.org/MedicalDevice>;
@@ -7504,6 +7609,12 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The rating for the content." .
 
+<http://schema.org/readonlyValue> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "readonlyValue";
+   <http://schema.org/domainIncludes> <http://schema.org/PropertyValueSpecification>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Boolean>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Whether or not a property is mutable.  Default is false. Specifying this for a property that also has a value makes it act similar to a \"hidden\" input in an HTML form." .
+
 <http://schema.org/realEstateAgent> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "realEstateAgent";
    <http://schema.org/domainIncludes> <http://schema.org/RentAction>;
@@ -7573,16 +7684,17 @@
    <http://schema.org/rangeIncludes> <http://schema.org/RecommendedDoseSchedule>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Recommended intake of this supplement for a given population as defined by a specific recommending authority." .
 
-<http://schema.org/references> a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+<http://schema.org/references> a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "references"@en,
      "reference"@cs;
    <http://purl.org/vocab/vann/usageNote> "Cardinality: 0..1"@en,
      "Kardinalita: 0..1"@cs;
+   <http://schema.org/domainIncludes> <http://schema.org/WorkExperience>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Boolean>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates whether applicant is able to provide contact for references"@en,
      "Ukazuje, zda žadatel/ka může uvést kontakt pro poskytnutí reference k minulé práci"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/WorkExperience>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/regionDrained> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "regionDrained";
@@ -7749,7 +7861,8 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Ticket>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "A ticket associated with the reservation." .
 
-<http://schema.org/responsibilities> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/responsibilities> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "responsibilities",
      "pracovní náplň"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
@@ -8174,7 +8287,8 @@
    <http://www.w3.org/2000/01/rdf-schema#comment> "The stage represented as a number, e.g. 3." .
 
 <http://schema.org/startDate> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
-     <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+     <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "startDate",
      "start date"@en,
      "datum nástupu"@cs;
@@ -8184,14 +8298,13 @@
      <http://schema.org/Season>,
      <http://schema.org/TVSeason>,
      <http://schema.org/Series>,
-     <http://schema.org/TVSeries>;
+     <http://schema.org/TVSeries>,
+     <http://schema.org/JobPosting>;
    <http://schema.org/rangeIncludes> <http://schema.org/Date>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The start date and time of the event or item (in <a href='http://en.wikipedia.org/wiki/ISO_8601'>ISO 8601 date format</a>).",
      "Date when employment starts"@en,
      "Datum zahájení práce"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/JobPosting>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#date> .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/startTime> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "startTime",
@@ -8209,6 +8322,12 @@
    <http://schema.org/rangeIncludes> <http://schema.org/MedicalStudyStatus>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The status of the study (enumerated)." .
 
+<http://schema.org/stepValue> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "stepValue";
+   <http://schema.org/domainIncludes> <http://schema.org/PropertyValueSpecification>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Number>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies a regular expression for testing literal values according to the HTML spec." .
+
 <http://schema.org/storageRequirements> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "storageRequirements";
    <http://schema.org/domainIncludes> <http://schema.org/SoftwareApplication>;
@@ -8216,7 +8335,8 @@
      <http://schema.org/URL>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Storage requirements (free space required)." .
 
-<http://schema.org/streetAddress> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/streetAddress> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "streetAddress",
      "ulice"@cs;
    <http://purl.org/vocab/vann/usageNote> "Může zahrnovat číslo popisné"@cs;
@@ -8359,6 +8479,12 @@
    <http://schema.org/rangeIncludes> <http://schema.org/AnatomicalStructure>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The area to which the artery supplies blood to." .
 
+<http://schema.org/target> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "target";
+   <http://schema.org/domainIncludes> <http://schema.org/Action>;
+   <http://schema.org/rangeIncludes> <http://schema.org/EntryPoint>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates a target EntryPoint for an Action." .
+
 <http://schema.org/targetDescription> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "targetDescription";
    <http://schema.org/domainIncludes> <http://schema.org/AlignmentObject>;
@@ -8403,7 +8529,8 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The Tax / Fiscal ID of the organization or person, e.g. the TIN in the US or the CIF/NIF in Spain." .
 
-<http://schema.org/telephone> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/telephone> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "telephone",
      "telefonní číslo"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/Organization>,
@@ -8476,7 +8603,8 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The type of tissue sample required for the test." .
 
-<http://schema.org/title> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/title> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "title",
      "pracovní pozice"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
@@ -8587,16 +8715,17 @@
    <http://schema.org/rangeIncludes> <http://schema.org/AnatomicalStructure>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The anatomical or organ system that the vein flows into; a larger structure that the vein connects to." .
 
-<http://schema.org/type> a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+<http://schema.org/type> a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "type"@en,
      "typ"@cs;
    <http://purl.org/vocab/vann/usageNote> "Cardinality 1..1"@en,
      "Kardinalita 1..1"@cs;
+   <http://schema.org/domainIncludes> <http://schema.org/Compensation>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Text>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Type of compensation. Recommended values are: annual, monthly, hourly, fixed."@en,
      "Způsob výpočtu a vyplácení kompenzace. Doporučené hodnoty jsou: roční, měsíční, hodinová, fixní."@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/Compensation>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/typeOfGood> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "typeOfGood";
@@ -8709,7 +8838,8 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Date>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "The date when the item is no longer valid." .
 
-<http://schema.org/value> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+<http://schema.org/value> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>,
+     <http://www.w3.org/2002/07/owl#DatatypeProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "value",
      "hodnota"@cs;
    <http://schema.org/domainIncludes> <http://schema.org/QuantitativeValue>;
@@ -8723,6 +8853,24 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Boolean>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies whether the applicable value-added tax (VAT) is included in the price specification or not." .
 
+<http://schema.org/valueMaxLength> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "valueMaxLength";
+   <http://schema.org/domainIncludes> <http://schema.org/PropertyValueSpecification>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Number>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies the allowed range for number of characters in a literal value." .
+
+<http://schema.org/valueMinLength> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "valueMinLength";
+   <http://schema.org/domainIncludes> <http://schema.org/PropertyValueSpecification>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Number>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies the minimum allowed range for number of characters in a literal value." .
+
+<http://schema.org/valuePattern> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "valuePattern";
+   <http://schema.org/domainIncludes> <http://schema.org/PropertyValueSpecification>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Number>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Specifies a regular expression for testing literal values according to the HTML spec." .
+
 <http://schema.org/valueReference> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "valueReference";
    <http://schema.org/domainIncludes> <http://schema.org/QualitativeValue>,
@@ -8730,6 +8878,12 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Enumeration>,
      <http://schema.org/StructuredValue>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "A pointer to a secondary value that provides additional information on the original value, e.g. a reference temperature." .
+
+<http://schema.org/valueRequired> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "valueRequired";
+   <http://schema.org/domainIncludes> <http://schema.org/PropertyValueSpecification>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Boolean>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "Whether the property must be filled in to complete the action.  Default is false." .
 
 <http://schema.org/vatID> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "vatID";
@@ -8942,17 +9096,18 @@
    <http://schema.org/rangeIncludes> <http://schema.org/Person>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Someone working for this organization." .
 
-<http://schema.org/employer> a <http://www.w3.org/2002/07/owl#FunctionalProperty>;
+<http://schema.org/employer> a <http://www.w3.org/2002/07/owl#FunctionalProperty>,
+     <http://www.w3.org/2002/07/owl#ObjectProperty>;
    <http://www.w3.org/2000/01/rdf-schema#label> "employer"@en,
      "zaměstnavatel"@cs;
    <http://purl.org/vocab/vann/usageNote> "Cardinality: 0..1"@en,
      "Kardinalita: 0..1"@cs;
+   <http://schema.org/domainIncludes> <http://schema.org/JobPosting>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Organization>,
+     <http://schema.org/Person>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "Property relating job postings to persons or organizations offering a job"@en,
      "Vlastnost propojující nabídky práce s osobami nebo organizacemi, které práci nabízejí"@cs;
-   <http://www.w3.org/2000/01/rdf-schema#domain> <http://schema.org/JobPosting>;
-   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org>;
-   <http://www.w3.org/2000/01/rdf-schema#range> [ a <http://www.w3.org/2002/07/owl#Class>;
-     <http://www.w3.org/2002/07/owl#unionOf> (<http://schema.org/Organization> <http://schema.org/Person>)] .
+   <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> <http://schema.org> .
 
 <http://schema.org/encoding> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "encoding";
@@ -9003,6 +9158,12 @@
      <http://schema.org/Person>;
    <http://www.w3.org/2000/01/rdf-schema#comment> "A member of this organization.",
      "The individual with the membership." .
+
+<http://schema.org/muscleAction> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "muscleAction";
+   <http://schema.org/domainIncludes> <http://schema.org/Muscle>;
+   <http://schema.org/rangeIncludes> <http://schema.org/Text>;
+   <http://www.w3.org/2000/01/rdf-schema#comment> "The movement the muscle generates." .
 
 <http://schema.org/parent> a <http://www.w3.org/1999/02/22-rdf-syntax-ns#Property>;
    <http://www.w3.org/2000/01/rdf-schema#label> "parent";
@@ -9088,6 +9249,10 @@
 <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_LRMIClass> a <http://schema.org/Organization>;
    <http://www.w3.org/2000/01/rdf-schema#label> "LRMIClass";
    <http://www.w3.org/2000/01/rdf-schema#comment> "This class is based on the work of the LRMI project, see lrmi.net for details." .
+
+<http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_ActionCollabClass> a <http://schema.org/Organization>;
+   <http://www.w3.org/2000/01/rdf-schema#label> "ActionCollabClass";
+   <http://www.w3.org/2000/01/rdf-schema#comment> "The schema.org Actions mechanism benefited from extensive discussions across the Web standards community around W3C, in particular from the <a href=\"http://purl.org/hydra/\"> Hydra project</a>'s community group." .
 
 <http://www.w3.org/wiki/WebSchemas/SchemaDotOrgSources#source_DatasetClass> a <http://schema.org/Organization>;
    <http://www.w3.org/2000/01/rdf-schema#label> "DatasetClass";
