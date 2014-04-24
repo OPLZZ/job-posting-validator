@@ -22,9 +22,7 @@ module Helpers
 
   # Array of fixtures files
   def fixtures
-    @fixtures ||= Dir[File.join(Rails.root, "spec", "fixtures", "/*")].map do |fixture|
-      File.basename(fixture, ".*")
-    end
+    @fixtures ||= Dir[Rails.root.join("spec", "fixtures", "*/*")]
   end
 
   # Loads fixture from `file_name` in /spec/fixtures directory

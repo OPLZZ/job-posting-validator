@@ -1,0 +1,4 @@
+@prefix schema: <http://schema.org/> .
+
+[] schema:type "Annual"@en ;
+  schema:currency "EUR" . 

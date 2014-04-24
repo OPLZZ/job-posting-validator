@@ -1,0 +1,3 @@
+@prefix ex: <http://example.com/> .
+
+[] ex:label "Bork bork bork!"@sv, "Grumpy goblin"@en . 

@@ -1,0 +1,4 @@
+@prefix schema: <http://schema.org/> .
+@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
+
+[] schema:startDate "2013-04-01"^^xsd:date . 

@@ -1,4 +1,5 @@
 @prefix :       <http://example.com/> .
 @prefix schema: <http://schema.org/> .
 
-:invalid-job-posting schema:availableVacancies -214 .
+[] schema:baseSalary 1234.5 ;
+  schema:salaryCurrency "EUR" .

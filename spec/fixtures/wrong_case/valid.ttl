@@ -1,0 +1,6 @@
+@prefix schema: <http://schema.org/> .
+
+[] a schema:JobPosting ;
+  schema:compensation [
+      a schema:Compensation
+    ] .

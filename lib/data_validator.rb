@@ -146,7 +146,7 @@ class DataValidator
     query = File.read test
     query = add_graph(query, graph_name)
     results = @sparql.query query
-
+    
     graph = RDF::Graph.new
     graph << results
     
@@ -164,7 +164,7 @@ class DataValidator
   #
   def validate(parsed_data)
     graph_name = load_data parsed_data
-     
+   
     begin 
       results = @tests.map do |test|
         run_test(test, graph_name)
@@ -172,7 +172,7 @@ class DataValidator
     ensure
       clear_graph graph_name
     end
-      
+
     # Remove empty results
     results.flatten.reject(&:empty?)
   end

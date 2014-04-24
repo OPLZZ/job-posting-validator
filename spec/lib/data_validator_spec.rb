@@ -100,18 +100,42 @@ describe DataValidator do
       end
       
       describe "#run_test" do
+        # Helper method for running validation rule against valid or invalid fixtures
+        #
+        # @param test [String]   Name of the validation rule to run
+        # @param valid [Boolean] Choose to test against valid or invalid fixtures
+        # @returns [Hash]        Validation results in JSON-LD
+        #
+        def test_rule(rule, valid = true)
+          filename = valid ? "valid" : "invalid"
+          fixture = load_fixture File.join(File.basename(rule, ".rq"), "#{filename}.ttl")
+          graph_name = data_validator.load_data fixture
+          test_result = data_validator.run_test(rule, graph_name)
+          data_validator.clear_graph graph_name
+          test_result
+        end
+
         it "has test data for each validation rule" do
           data_validator.tests.each do |test|
-            fixtures.should include(File.basename(test, ".rq"))
+            test_name = File.basename(test, ".rq")
+            expected_fixtures = ["valid", "invalid"].map do |filename|
+              Rails.root.join("spec", "fixtures", test_name, "#{filename}.ttl").to_s
+            end
+            fixtures.should include(*expected_fixtures), "Missing fixtures for: #{test}"
           end
         end
 
-        it "produces non-empty validation report for erroneous input" do
+        it "produces non-empty validation report for invalid input" do
           data_validator.tests.each do |test|
-            graph_name = data_validator.load_data load_fixture(File.basename(test, ".rq") + ".ttl")
-            test_result = data_validator.run_test(test, graph_name)
-            data_validator.clear_graph graph_name
+            test_result = test_rule(test, valid = false)
             test_result.should_not be_empty, "Failed test: #{test}" 
+          end
+        end
+
+        it "produces empty validation report for valid input" do
+          data_validator.tests.each do |test|
+            test_result = test_rule(test)
+            test_result.should be_empty, "Failed test: #{test}" 
           end
         end
       end

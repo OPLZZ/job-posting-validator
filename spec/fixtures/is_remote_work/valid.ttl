@@ -1,0 +1,7 @@
+@prefix :       <http://example.com/> .
+@prefix schema: <http://schema.org/> .
+
+[] schema:isRemoteWork true .
+
+[] schema:isRemoteWork false ;
+  schema:jobLocation :location .

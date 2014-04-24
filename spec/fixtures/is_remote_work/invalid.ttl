@@ -1,10 +1,8 @@
 @prefix :       <http://example.com/> .
 @prefix schema: <http://schema.org/> .
 
-:invalid-job-posting schema:isRemoteWork true ;
-  schema:jobLocation :location .
+[] schema:isRemoteWork true ;
+  schema:jobLocation [] .
 
-:valid-job-posting1 schema:isRemoteWork false ;
-  schema:address :address .
-
-:valid-job-posting2 schema:isRemoteWork true .
+[] schema:isRemoteWork true ;
+  schema:address [] .
