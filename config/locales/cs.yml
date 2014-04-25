@@ -33,4 +33,4 @@ cs:
     validation_results: "Výsledky validace"
     violation_path: "Chybná vlastnost"
     violation_root: "Chybný zdroj"
-  title: "JobPosting validátor"
+  title: "Schema.org JobPosting validátor"

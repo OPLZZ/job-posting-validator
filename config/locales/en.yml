@@ -32,4 +32,4 @@ en:
     validation_results: "Validation results"
     violation_path: "Violation path"
     violation_root: "Violation root"
-  title: "JobPosting Validator"
+  title: "Schema.org JobPosting Validator"
