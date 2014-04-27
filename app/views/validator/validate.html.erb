@@ -1,9 +1,9 @@
 <h2><%= t "preview.validation_results" %></h2>
 
 <% if @errors.empty? %>
-  <p class="label label-success"><%= t "preview.passed" %></p>
+  <%= render partial: "validation_passed" %>
 <% else %>
-  <p class="label label-important"><%= t "preview.failed" %></p>
+  <%= render partial: "validation_failed" %>
   <p><%= t "preview.errors_no" %>: <strong><%= @errors.size %></strong></p>
   <table class="table table-striped">
     <thead>

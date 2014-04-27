@@ -6,17 +6,17 @@
 @iconWhiteSpritePath: image-url("twitter/bootstrap/glyphicons-halflings-white.png");
 
 // Set the Font Awesome (Font Awesome is default. You can disable by commenting below lines)
-// @fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
-// @fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
-// @fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
-// @fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
-// @fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
+@fontAwesomeEotPath: asset-url("fontawesome-webfont.eot");
+@fontAwesomeEotPath_iefix: asset-url("fontawesome-webfont.eot?#iefix");
+@fontAwesomeWoffPath: asset-url("fontawesome-webfont.woff");
+@fontAwesomeTtfPath: asset-url("fontawesome-webfont.ttf");
+@fontAwesomeSvgPath: asset-url("fontawesome-webfont.svg#fontawesomeregular");
 
 // Font Awesome
-// @import "fontawesome/font-awesome";
+@import "fontawesome/font-awesome";
 
 // Glyphicons
-@import "twitter/bootstrap/sprites.less";
+// @import "twitter/bootstrap/sprites.less";
 
 // Your custom LESS stylesheets goes here
 //
@@ -39,7 +39,7 @@ body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  /* Negative indent footer by it's height */
+  /* Negative indent footer by its height */
   margin: 0 auto -60px;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 
 #main {
-  padding-top: 80px;
+  padding-top: 100px;
 }
 
 /* Set the fixed height of the footer here */
@@ -102,4 +102,8 @@ body {
 #preview dt {
   clear: none;
   padding-right: 20px;
+}
+
+.alert-link {
+  text-decoration: underline;
 }
