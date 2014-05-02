@@ -22,7 +22,7 @@
     <nav class="navbar navbar-fixed-top" role="navigation">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="/" rel="home"><img src="assets/damepraci_logo.png" width="50" height="50" /><%= t "title" %></a>
+          <%= link_to(image_tag("damepraci_logo.png", width: 50, height: 50) + t("title"), "/", class: "brand", reL: "home") %>
         </div>
       </div>
     </nav>
