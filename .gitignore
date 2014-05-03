@@ -6,6 +6,7 @@
 
 TODO
 vendor/jena-fuseki-*
+public/assets
 
 # Ignore bundler config.
 /.bundle
